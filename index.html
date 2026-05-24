@@ -31,9 +31,22 @@ nav a:hover{color:var(--accent)}
 .depth-rule span{font-family:var(--font-title);font-size:0.65rem;letter-spacing:0.3em;color:var(--muted);white-space:nowrap}
 .vault-count{font-size:0.72rem;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;padding:0 2.5rem;max-width:1440px;margin:0 auto 1.5rem}
 .vault-count span{color:var(--teal)}
-.vault-grid{max-width:1440px;margin:0 auto;padding:0 2rem 8rem;position:relative}
-.vault-col{position:absolute;top:0}
-.vault-item{margin-bottom:1.25rem;cursor:pointer;display:block;width:100%}
+
+/* CSS columns — no JS masonry needed */
+.vault-grid{
+  max-width:1440px;
+  margin:0 auto;
+  padding:0 2rem 8rem;
+  columns:3 400px;
+  column-gap:1.25rem;
+}
+.vault-item{
+  break-inside:avoid;
+  margin-bottom:1.25rem;
+  cursor:pointer;
+  display:block;
+  width:100%;
+}
 .vault-frame{position:relative;overflow:hidden}
 .vault-frame::before{content:'';position:absolute;inset:0;z-index:2;border:1px solid rgba(200,169,110,0.18);pointer-events:none;transition:border-color 0.4s}
 .vault-frame::after{content:'';position:absolute;inset:0;z-index:3;transition:box-shadow 0.5s;pointer-events:none}
@@ -61,6 +74,7 @@ nav a:hover{color:var(--accent)}
 .vault-item:hover .vault-caption-wrap::before{width:48px;opacity:1}
 .vault-caption{font-family:var(--font-caption);font-size:1.15rem;color:var(--muted);line-height:1.35;transition:color 0.3s}
 .vault-item:hover .vault-caption{color:var(--text)}
+
 .lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,5,0.96);align-items:center;justify-content:center;flex-direction:column;padding:2rem;backdrop-filter:blur(4px)}
 .lightbox.active{display:flex}
 .lb-img-wrap{position:relative;max-width:90vw;max-height:80vh}
@@ -193,91 +207,47 @@ const lightbox = document.getElementById('lightbox');
 const lbImg = document.getElementById('lbImg');
 const lbCaption = document.getElementById('lbCaption');
 const countEl = document.getElementById('imgCount');
-let current = 0, loaded = 0;
-const GAP = 20;
-let numCols = 3;
-let cols = [], colHeights = [];
+let current = 0;
 
-function getNumCols() {
-  const w = grid.offsetWidth;
-  if (w < 600) return 1;
-  if (w < 1100) return 2;
-  return 3;
-}
-
-function initCols(n) {
-  numCols = n;
-  grid.innerHTML = '';
-  cols = [];
-  colHeights = new Array(n).fill(0);
-  const colWidth = (grid.offsetWidth - GAP * (n - 1)) / n;
-  for (let i = 0; i < n; i++) {
-    const col = document.createElement('div');
-    col.className = 'vault-col';
-    col.style.width = colWidth + 'px';
-    col.style.left = (i * (colWidth + GAP)) + 'px';
-    grid.appendChild(col);
-    cols.push(col);
-  }
-}
-
-function shortestCol() {
-  let min = colHeights[0], idx = 0;
-  colHeights.forEach((h, i) => { if (h < min) { min = h; idx = i; } });
-  return idx;
-}
-
-function buildItem(item, i) {
-  const wrapper = document.createElement('div');
-  wrapper.className = 'vault-item';
-  const frame = document.createElement('div');
-  frame.className = 'vault-frame';
-  ['tl','tr','bl','br'].forEach(pos => {
-    const c = document.createElement('div');
-    c.className = `corner ${pos}`;
-    frame.appendChild(c);
+function buildGrid() {
+  let count = 0;
+  items.forEach((item, i) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'vault-item';
+    const frame = document.createElement('div');
+    frame.className = 'vault-frame';
+    ['tl','tr','bl','br'].forEach(pos => {
+      const c = document.createElement('div');
+      c.className = `corner ${pos}`;
+      frame.appendChild(c);
+    });
+    const fade = document.createElement('div');
+    fade.className = 'img-fade';
+    frame.appendChild(fade);
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = item.caption;
+    img.loading = 'lazy';
+    img.style.width = '100%';
+    img.style.height = 'auto';
+    img.style.display = 'block';
+    img.onerror = () => { wrapper.style.display = 'none'; };
+    img.onload = () => { count++; countEl.textContent = count; };
+    frame.appendChild(img);
+    const capWrap = document.createElement('div');
+    capWrap.className = 'vault-caption-wrap';
+    const cap = document.createElement('div');
+    cap.className = 'vault-caption';
+    cap.textContent = item.caption;
+    capWrap.appendChild(cap);
+    wrapper.appendChild(frame);
+    wrapper.appendChild(capWrap);
+    wrapper.addEventListener('click', () => openLightbox(i));
+    grid.appendChild(wrapper);
   });
-  const fade = document.createElement('div');
-  fade.className = 'img-fade';
-  frame.appendChild(fade);
-  const img = document.createElement('img');
-  img.alt = item.caption;
-  img.loading = 'lazy';
-  img.onerror = () => { console.error('MISSING: ' + item.src); wrapper.remove(); };
-  img.onload = () => {
-    loaded++;
-    countEl.textContent = loaded;
-    const idx = shortestCol();
-    cols[idx].appendChild(wrapper);
-    colHeights[idx] += wrapper.offsetHeight + GAP;
-    grid.style.height = Math.max(...colHeights) + 'px';
-  };
-  img.src = item.src;
-  frame.appendChild(img);
-  const capWrap = document.createElement('div');
-  capWrap.className = 'vault-caption-wrap';
-  const cap = document.createElement('div');
-  cap.className = 'vault-caption';
-  cap.textContent = item.caption;
-  capWrap.appendChild(cap);
-  wrapper.appendChild(frame);
-  wrapper.appendChild(capWrap);
-  wrapper.addEventListener('click', () => openLightbox(i));
-  return wrapper;
 }
 
-function init() {
-  loaded = 0;
-  countEl.textContent = '—';
-  const n = getNumCols();
-  initCols(n);
-  items.forEach((item, i) => buildItem(item, i));
-}
-
-window.addEventListener('load', init);
-window.addEventListener('resize', () => {
-  if (getNumCols() !== numCols) init();
-});
+buildGrid();
 
 function openLightbox(i) {
   current = i;
