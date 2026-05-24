@@ -125,39 +125,60 @@ footer a{color:var(--accent);text-decoration:none}
 </footer>
 <script>
 const items = [
-  { src:"images/Vette mountain 1.png", caption:"Mummy Mountain. The start of every great story." },
+  { src:"images/Vette mountainntop.png", caption:"The view that changed everything." },
+  { src:"images/3 pickup trucks - angled.png", caption:"They came from three different directions. That was never a coincidence." },
   { src:"images/Tim Window Aliens.png", caption:"They were there before we noticed. They were always there." },
-  { src:"images/Firefly_Gemini Flash_1987 high school talent show auditorium. View from behind audience, center aisle, sea 690735.png", caption:'"JAYDEEEEE!" She didn\'t even look my way.' },
-  { src:"images/Firefly_Gemini Flash_A 1982 Toyota Camry upside down in a desert landscape, roof caved in and crushed near 413303.png", caption:"They didn't need to search. They just followed the music." },
   { src:"images/Guys in back yard 1.png", caption:'"What the fuck, Freddy! You know not to do beer runs without a plan!"' },
-  { src:"images/Firefly_GeminiFlash_Cinematic aerial shot from above, faacing the cul de sac,  nighttime, a cul de sac wi 202562.png", caption:'"What the fuck, Freddy! You know not to do beer runs without a plan!"' },
-  { src:"images/Pipewrench TA 1.png", caption:"He didn't hesitate. The knife did the talking." },
-  { src:"images/Firefly_Gemini Flash_A rugged Wyoming hillside at golden hour. A pissed off middle aged man man with long  69991 2.png", caption:'"No fucking way\u2026" He crouched down. It was a camera. They were being watched.' },
-  { src:"images/Firefly__A remote Wyoming highway at golden late afternoon, dust still settling. A large blac 853136.png", caption:'"Milton Cromwell. Thanks for coming to our aid."' },
-  { src:"images/Miltons Wine Room 1 chair.png", caption:"The cellar where Sasha chose the wine that gets opened, not worshipped." },
-  { src:"images/Milton's Trophy Room 1 - gorilla front.png", caption:"The gorilla. The one kill that said everything about Milton." },
-  { src:"images/Firefly_Gemini Flash_A massive silverback gorilla tax 484291 9QU.png", caption:"The gorilla. The one kill that said everything about Milton." },
-  { src:"images/Miltons Trophy Room - deep.png", caption:'"Conservation of memory." Milton\'s words, not ours.' },
-  { src:"images/Firefly_Gemini Flash_A narrow antique wooden desk rec 484291 VKS.png", caption:'"Sign at the tabs. Standard confidentiality agreement. For the basement."' },
-  { src:"images/Firefly_Gemini Flash_Four men sitting around an outdo 511327 s31.png", caption:"Five people. One fire. The night everything changed." },
-  { src:"images/milton rpg.png", caption:"It moved when Tim asked it to. Then it flashed twice." },
-  { src:"images/Firefly_Gemini Flash_A glowing orb of shifting blue w 485371 Pgw.png", caption:"It moved when Tim asked it to. Then it flashed twice." },
-  { src:"images/Firefly_GeminiFlash_A rocket propelled grenade streaking across a clear dark night sky with stars visible 511327.png", caption:"CES interrupted. Milton's shot. The moment everything changed." },
-  { src:"images/Firefly_Gemini Flash_POV through a precision rifle scope at night, crosshairs centered on a large glowing  76472.png", caption:"He had them in his sights. Then the orb had other plans." },
-  { src:"images/Firefly_Gemini Flash_A moonlit Wyoming forest at night. A large powerful black wolf moves through the tree 697483 (2).png", caption:'"Ozzy," he said. "He\'s a god. You don\'t question gods."' },
-  { src:"images/Firefly_Gemini Flash_Aerial view looking down at a dark river at night, moonlit. Two people floating in th 697483 (1).png", caption:"Ozzy knew the way. They just had to trust the current." },
-  { src:"images/Firefly_GeminiFlash_A crashed spacecraft partially buried in rocky mountainside terrain at night, debris  485371.png", caption:"What Milton called an acquisition. What Tim knew was alive." },
-  { src:"images/Firefly_GeminiFlash_A crashed spacecraft partially buried in rocky mountainside terrain at night, debris  485371 (1).png", caption:"What Milton called an acquisition. What Tim knew was alive." },
-  { src:"images/Firefly_Gemini Flash_A crashed spacecraft partially b 485371 dzd.png", caption:"What Milton called an acquisition. What Tim knew was alive." },
-  { src:"images/Firefly_A tense natural underground cave enclosure, dimly lit with cold green bioluminescent  258439.png", caption:"The anaconda blinked first. Then the world disappeared." },
-  { src:"images/Firefly_Gemini Flash_A powerful older man, with a bla 788753 bMY.png", caption:"The anaconda blinked first. Then the world disappeared." },
-  { src:"images/Milton Enclosure - All Four more.png", caption:"He collected things that couldn't fight back. Then Tim gave him something to remember." },
-  { src:"images/3 pickup trucks.png", caption:"Three trucks. No plates. Nobody asked questions." },
+  { src:"images/Firefly_Gemini Flash_1987 high school talent show auditorium. View from behind audience, center aisle, sea 690735.png", caption:'"JAYDEEEEE!" She didn\'t even look my way.' },
+  { src:"images/Firefly_Gemini Flash_A high school auditorium talent show, 1987. View from behind, looking down a center a 794790.png", caption:"Row by row, they watched. One seat stayed empty." },
+  { src:"images/Firefly_Gemini Flash_A 1982 Toyota Camry upside down in a desert landscape, roof caved in and crushed near 413303.png", caption:"They didn't need to search. They just followed the music." },
+  { src:"images/Firefly_Gemini Flash__A remote Wyoming highway at golden late afternoon, dust still settling. A large blac 853136.png", caption:"Wyoming never looked like this to outsiders. To them, it looked like home." },
+  { src:"images/Firefly_GeminiFlash__A remote Wyoming highway at golden late afternoon, dust still settling. A large blac 853136.png", caption:"The highway that connects everything. If you know where to look." },
+  { src:"images/Firefly_Gemini Flash_Four men sitting around an outdo 511327 s31.png", caption:"Four men. One fire. A story that couldn't stay buried." },
+  { src:"images/Firefly_Gemini Flash_POV through a precision rifle scope at night, crosshairs centered on a large glowing  76472.png", caption:"He had one shot. He didn't take it." },
+  { src:"images/Firefly_Gemini Flash_A crashed spacecraft partially b 485371 2Zq.png", caption:"Some crashes aren't accidents." },
+  { src:"images/Firefly_Gemini Flash_A crashed spacecraft partially b 485371 dzd.png", caption:"Debris that didn't rust. Metal that didn't corrode." },
+  { src:"images/Firefly_GeminiFlash_A crashed spacecraft partially buried in rocky mountainside terrain at night, debris  233982.png", caption:"It didn't fall from the sky. It came from somewhere else entirely." },
+  { src:"images/Firefly_GeminiFlash_A crashed spacecraft partially buried in rocky mountainside terrain at night, debris  485371 (1).png", caption:"The second site. The one they never reported." },
+  { src:"images/Firefly_GeminiFlash_A crashed spacecraft partially buried in rocky mountainside terrain at night, debris  485371.png", caption:"Three sites. Three denials. Zero coincidences." },
+  { src:"images/Firefly_Gemini Flash_A glowing orb of shifting blue w 485371 Pgw.png", caption:"The orb pulsed like a heartbeat. Something inside was still alive." },
+  { src:"images/Firefly_GeminiFlash_Cinematic aerial shot from above, faacing the cul de sac,  nighttime, a cul de sac wi 202562.png", caption:"The cul-de-sac where it happened. The neighborhood that forgot." },
   { src:"images/Firefly_Gemini Flash_Late night inside a small-town Wyoming sheriff's station. View from behind the sherif 266275.png", caption:'Three files. Same pattern. Different years. "That\'s not nothing," he muttered.' },
+  { src:"images/Firefly_Gemini Flash_A powerful older man, with a bla 788753 bMY.png", caption:"Milton Haze. The man who built the rules. And broke them." },
+  { src:"images/Firefly_Gemini Flash_A narrow antique wooden desk rec 484291 VKS.png", caption:"The desk where every deal was made. Every secret was kept." },
+  { src:"images/Firefly_Gemini Flash_A massive silverback gorilla tax 484291 9QU.png", caption:"Milton's prize. His proof of everything." },
+  { src:"images/Milton's Trophy Room 1 - gorilla front.png", caption:"The gorilla watched everything. It always had." },
+  { src:"images/Miltons Trophy Room - deep.png", caption:"The deep room. Where the real trophies lived." },
+  { src:"images/Milton's Wine Room 2 chairs distant.png", caption:"Two chairs. He rarely had company. That was intentional." },
+  { src:"images/Miltons Wine Room 1 chair.png", caption:"One chair. Because the conversation was always one-sided." },
+  { src:"images/Milton Enclosure - two thugs watching.png", caption:"They weren't guards. They were reminders." },
+  { src:"images/milton rpg.png", caption:"There are men who talk. And men who act. Milton only did one." },
+  { src:"images/Firefly_Gemini Flash_A man's foot pinned to a dark ha 511327 kun.png", caption:"He couldn't move. He could still think. That was enough." },
+  { src:"images/Firefly_Gemini Flash_A rugged Wyoming hillside at golden hour. A pissed off middle aged man man with long  69991.png", caption:"Freddy doesn't ask twice. He barely asks once." },
+  { src:"images/Pipewrench TA 1.png", caption:"Freddy's tool of choice. For everything." },
+  { src:"images/Firefly_GeminiFlash_A rocket propelled grenade streaking across a clear dark night sky with stars visible 511327.png", caption:"Some problems require unconventional solutions." },
+  { src:"images/Ozzy Mooonlit front.png", caption:"Ozzy. He found his person before his person found himself." },
+  { src:"images/Firefly_Gemini Flash_A moonlit Wyoming forest at night. A large powerful black wolf moves through the tree 697483 (1).png", caption:"He moved like shadow. He hunted like memory." },
+  { src:"images/PIGSKIN SITTING.png", caption:"He found his person in Limbo. Pigskin always knows." },
+  { src:"images/PIGSKIN ON FOOT.png", caption:"Some loyalties are unconditional. Pigskin never read the rulebook." },
+  { src:"images/Lemmy K9 Badge.png", caption:"Lemmy K9. Some badges you earn. Some you survive." },
+  { src:"images/Firefly_Gemini Flash_A man and woman in their early f 247255 EGI.png", caption:"Eighteen seconds. They both counted past it." },
+  { src:"images/Firefly_A handwritten letter on aged cream paper, lying on a dark wooden surface with two sma 266275.png", caption:'I love you, Tim. And I think this note will prove\u2026 it\'s forever. \u2665 Sasha' },
+  { src:"images/Firefly_GeminiFlash_A handwritten letter on aged cream paper, lying on a dark wooden surface with two sma 266275 (1).png", caption:"Written underground. Delivered by miracle." },
+  { src:"images/Firefly_GeminiFlash_A handwritten letter on aged cream paper, lying on a dark wooden surface with two sma 266275.png", caption:"Some words survive everything. These did." },
+  { src:"images/Firefly_GeminiFlash_A weathered wooden time capsule box open on a dark wood table, contents spread around 827522.png", caption:"Thirty years underground. Everything they left for themselves." },
+  { src:"images/Firefly_Gemini Flash_Aerial view looking down at a dark river at night, moonlit. Two people floating in th 697483 (1).png", caption:"The river carried them. Neither one fought it." },
+  { src:"images/Firefly_Gemini Flash_A vast night sky above Wyoming mountains beginning to fold and fracture, geometric pa 96369 (2).png", caption:"The hidden can no longer remain fully hidden. Then let's go." },
+  { src:"images/Firefly_GeminiFlash_A vast night sky above Wyoming m 96369 6yw.png", caption:"The sky broke open. And what was underneath was older than the stars." },
+  { src:"images/Firefly_GeminiFlash_A group of six people and a large Belgian Malinois dog standing at a large multi-pane 96369.png", caption:"The six. The dog. The window. The moment before everything changed." },
+  { src:"images/Firefly_A tense natural underground cave enclosure, dimly lit with cold green bioluminescent  258439.png", caption:"The cave that breathed. The cave that watched." },
+  { src:"images/Firefly_Gemini Flash_A tense natural underground cave enclosure, dimly lit with cold green bioluminescent  258439 (4).png", caption:"The deepest chamber. Where the rules of the surface didn't apply." },
+  { src:"images/Firefly_A vast underground cavern lit by bioluminescent blue crystal formations and faint war 559133.png", caption:"Former Congressman. Armed Services Committee. He was right all along." },
   { src:"images/Crystal Corridor 1 - Limbo.png", caption:"The crystals that light a world that shouldn't exist." },
-  { src:"images/Crystal Corridor 2 - Limbo.png", caption:"The crystals that light a world that shouldn't exist." },
-  { src:"images/Crystal Closeup 1 - Limbo.png", caption:"The crystals that light a world that shouldn't exist." },
+  { src:"images/Crystal Corridor 2 - Limbo.png", caption:"Every corridor looks the same until you learn to read the light." },
+  { src:"images/Crystal Closeup 1 - Limbo.png", caption:"Up close, the crystals hummed. Not loudly. Just enough." },
   { src:"images/Limbo Map - Claude favorite.png", caption:"The full map goes much deeper than anyone outside the Settled knows." },
+  { src:"images/Limbo maps - 4.png", caption:"Four maps. Four versions of the truth. One was accurate." },
   { src:"images/Limbo from above.png", caption:"The Threshold \u2014 where every arrival begins." },
   { src:"images/Limbo Corridor.png", caption:"Faith survives underground. So does everything else." },
   { src:"images/Limbo - Corridor - undetermned.png", caption:"They turned the geology into a research project. Some people process fear differently." },
@@ -165,14 +186,6 @@ const items = [
   { src:"images/Limbo - Corridor - The Belivers .png", caption:"The Believers took the warmest corridor. Comfort is a recruiting tool." },
   { src:"images/Limbo - Corridor - The Rationalists.png", caption:"The Rationalists took the coldest corridor. Logic is a coping mechanism." },
   { src:"images/Limbo - Corridor 6 - The Permanant Poulation.png", caption:"Six corridors. Six factions. One set of rules nobody fully understands." },
-  { src:"images/PIGSKIN SITTING.png", caption:"He found his person in Limbo. Pigskin always knows." },
-  { src:"images/Firefly_A vast underground cavern lit by bioluminescent blue crystal formations and faint war 559133.png", caption:"Former Congressman. Armed Services Committee. He was right all along." },
-  { src:"images/Lemmy K9 Badge.png", caption:"Lemmy K9. Some badges you earn. Some you survive." },
-  { src:"images/Firefly_GeminiFlash_A weathered wooden time capsule box open on a dark wood table, contents spread around 827522.png", caption:"Thirty years underground. Everything they left for themselves." },
-  { src:"images/Firefly_A handwritten letter on aged cream paper, lying on a dark wooden surface with two sma 266275.png", caption:"I love you, Tim. And I think this note will prove\u2026 it's forever. \u2665 Sasha" },
-  { src:"images/Firefly_Gemini Flash_A man and woman in their early f 247255 EGI.png", caption:"Eighteen seconds. They both counted past it." },
-  { src:"images/Firefly_GeminiFlash_A group of six people and a large Belgian Malinois dog standing at a large multi-pane 96369.png", caption:"The hidden can no longer remain fully hidden. Then let's go." },
-  { src:"images/Firefly_Gemini Flash_A vast night sky above Wyoming mountains beginning to fold and fracture, geometric pa 96369 (2).png", caption:"The hidden can no longer remain fully hidden. Then let's go." },
 ];
 
 const grid = document.getElementById('vaultGrid');
@@ -230,7 +243,7 @@ function buildItem(item, i) {
   const img = document.createElement('img');
   img.alt = item.caption;
   img.loading = 'lazy';
-  img.onerror = () => { wrapper.remove(); };
+  img.onerror = () => { console.error('MISSING: ' + item.src); wrapper.remove(); };
   img.onload = () => {
     loaded++;
     countEl.textContent = loaded;
@@ -254,6 +267,8 @@ function buildItem(item, i) {
 }
 
 function init() {
+  loaded = 0;
+  countEl.textContent = '—';
   const n = getNumCols();
   initCols(n);
   items.forEach((item, i) => buildItem(item, i));
