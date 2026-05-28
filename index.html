@@ -39,7 +39,7 @@ nav a:hover{color:var(--accent)}
 
 .vault-grid{max-width:1440px;margin:0 auto;padding:0 2rem 8rem;columns:3 400px;column-gap:1.25rem;overflow:hidden}
 .vault-item{break-inside:avoid;margin-bottom:1.25rem;cursor:pointer;display:block;width:100%}
-.vault-frame{position:relative;overflow:hidden}
+.vault-frame{position:relative;overflow:hidden;background:#0d0d0d}
 .vault-frame::before{content:'';position:absolute;inset:0;z-index:2;border:1px solid rgba(200,169,110,0.18);pointer-events:none;transition:border-color 0.4s}
 .vault-frame::after{content:'';position:absolute;inset:0;z-index:3;transition:box-shadow 0.5s;pointer-events:none}
 .vault-item:hover .vault-frame::before{border-color:rgba(26,138,114,0.5)}
@@ -57,7 +57,7 @@ nav a:hover{color:var(--accent)}
 .corner.br::before{right:0;left:auto}
 .corner.br::after{bottom:0;top:auto}
 .vault-item:hover .corner{opacity:1}
-.vault-frame img{width:100%;height:auto;display:block;max-width:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.4s;filter:brightness(0.88) saturate(0.9)}
+.vault-frame img{width:100%;height:auto;display:block;max-width:100%;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.4s;filter:brightness(0.88) saturate(0.9)}
 .vault-item:hover .vault-frame img{transform:scale(1.04);filter:brightness(1) saturate(1)}
 .vault-frame .img-fade{position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to bottom,transparent,rgba(13,13,13,0.7));z-index:2;pointer-events:none;transition:opacity 0.4s}
 .vault-item:hover .img-fade{opacity:0}
@@ -136,6 +136,7 @@ footer a{color:var(--accent);text-decoration:none}
 const items = [
   // ACT 1 — PHOENIX, 28 YEARS AGO
   { src:"images/Vette mountainntop.png", caption:"Mummy Mountain. The start of every great story." },
+  { src:"images/What the weekend was supposed to be.png", caption:"What the weekend was supposed to be." },
   { src:"images/Firefly_Gemini Flash_A high school auditorium talent show, 1987. View from behind, looking down a center a 794790.png", caption:"Row by row, they watched. One seat stayed empty." },
   { src:"images/Firefly_Gemini Flash_1987 high school talent show auditorium. View from behind audience, center aisle, sea 690735.png", caption:"The night Jaydee sang. The night Tim knew." },
   { src:"images/Will and shadows.png", caption:"The last thing Tim and his butterfly knife saw before darkness and missing time." },
@@ -146,7 +147,7 @@ const items = [
   { src:"images/Firefly_Gemini Flash_Four men sitting around an outdo 511327 s31.png", caption:"Four men. One fire. A story that couldn't stay buried." },
   { src:"images/Firefly_GeminiFlash_Cinematic aerial shot from above, faacing the cul de sac,  nighttime, a cul de sac wi 202562.png", caption:"The cul-de-sac where it happened. The neighborhood that forgot." },
   { src:"images/Milton crash and introduction.png", caption:'"Milton Cromwell. Thanks for coming to our aid."' },
-  { src:"images/Firefly_Gemini Flash_A powerful older man, with a bla 788753 bMY.png", caption:"Milton Haze. The man who built the rules. And broke them." },
+  { src:"images/Firefly_Gemini Flash_A powerful older man, with a bla 788753 bMY.png", caption:"Milton Cromwell. The man who built the rules. And broke them." },
   { src:"images/Firefly_Gemini Flash_A narrow antique wooden desk rec 484291 VKS.png", caption:'"Sign at the tabs. Standard confidentiality agreement. For the basement."' },
   { src:"images/Firefly_Gemini Flash_A massive silverback gorilla tax 484291 9QU.png", caption:"The unveiling. Milton's latest acquisition. His greatest statement." },
   { src:"images/Milton's Trophy Room 1 - gorilla front.png", caption:"The gorilla watched everything. It always had." },
@@ -156,11 +157,13 @@ const items = [
   { src:"images/Milton's Wine and Whiskey.png", caption:"Sasha chose the wine that gets opened, not worshipped." },
   { src:"images/Miltons Armory.png", caption:"Milton always planned on being prepared for anything. On this day, he had to go deep into the armory." },
   { src:"images/Firefly_Gemini Flash_POV through a precision rifle scope at night, crosshairs centered on a large glowing  76472.png", caption:"He had one shot. He didn't take it." },
+  { src:"images/Milton RPG.png", caption:"Always looking for something forbidden to acquire." },
   { src:"images/Firefly_GeminiFlash_A rocket propelled grenade streaking across a clear dark night sky with stars visible 511327.png", caption:"Some problems require unconventional solutions." },
   { src:"images/Firefly_Gemini Flash_A glowing orb of shifting blue w 485371 Pgw.png", caption:"The orb pulsed like a heartbeat. Something inside was still alive." },
-  { src:"images/3 pickup trucks - angled.png", caption:"They came from three different directions. That was never a coincidence." },
+  { src:"images/Milton's 3 dirty trucks in front of mansion.png", caption:"The Covenant cleaned up what needed cleaning." },
   { src:"images/Firefly_Gemini Flash_A rugged Wyoming hillside at golden hour. A pissed off middle aged man man with long  69991.png", caption:"Freddy doesn't ask twice. He barely asks once." },
-  { src:"images/Pipewrench TA 1.png", caption:"Freddy's tool of choice. For everything." },
+  { src:"images/Pipewrench TA 1.png", caption:'"Look for a Trans Am... He is a psycho in a suit, and he\'s trying to kill us."' },
+  { src:"images/Side by side.png", caption:"Richard\u2019s rescue. Even Satan disguises himself as an angel of light." },
   { src:"images/Orb in the hallway.png", caption:'"Did you happen to see that light? Looked like\u2026 I don\'t know. Something moving."' },
   { src:"images/Firefly_Gemini Flash_Late night inside a small-town Wyoming sheriff's station. View from behind the sherif 266275.png", caption:'Three files. Same pattern. Different years. "That\'s not nothing," he muttered.' },
   { src:"images/Firefly_GeminiFlash_A crashed spacecraft partially buried in rocky mountainside terrain at night, debris  233982.png", caption:"It didn't fall from the sky. It came from somewhere else entirely." },
@@ -180,9 +183,9 @@ const items = [
   { src:"images/Firefly_GeminiFlash_A handwritten letter on aged cream paper, lying on a dark wooden surface with two sma 266275 (1).png", caption:"Written underground. Delivered by miracle." },
   { src:"images/Firefly_GeminiFlash_A weathered wooden time capsule box open on a dark wood table, contents spread around 827522.png", caption:"Thirty years underground. Everything they left for themselves." },
   { src:"images/PIGSKIN SITTING.png", caption:"He found his person in Limbo. Pigskin always knows." },
-  { src:"images/PIGSKIN ON FOOT.png", caption:"Some loyalties are unconditional. Pigskin never read the rulebook." },
+  { src:"images/Pigskin with Richard's leg.png", caption:"Animals know." },
   { src:"images/Lemmy K9 Badge.png", caption:"Lemmy K9. Some badges you earn. Some you survive." },
-  { src:"images/Firefly_A tense natural underground cave enclosure, dimly lit with cold green bioluminescent  258439.png", caption:"The cave that breathed. The cave that watched." },
+  { src:"images/Firefly_A tense natural underground cave enclosure, dimly lit with cold green bioluminescent  258439.png", caption:"Nobody saw Richard go in. Nobody saw him come out. Just the water, and something moving beneath it." },
   { src:"images/Firefly_A vast underground cavern lit by bioluminescent blue crystal formations and faint war 559133.png", caption:"Former Congressman. Armed Services Committee. He was right all along." },
   { src:"images/Crystal Corridor 1 - Limbo.png", caption:"The crystals that light a world that shouldn\u2019t exist." },
   { src:"images/Crystal Corridor 2 - Limbo.png", caption:"Every corridor looks the same until you learn to read the light." },
