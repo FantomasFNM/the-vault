@@ -37,7 +37,7 @@ nav a:hover{color:var(--accent)}
 .vault-count{font-size:0.72rem;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;padding:0 2.5rem;max-width:1440px;margin:0 auto 1.5rem}
 .vault-count span{color:var(--teal)}
 
-.vault-grid{max-width:1440px;margin:0 auto;padding:0 2rem 8rem;columns:3 400px;column-gap:1.25rem;overflow:hidden}
+.vault-grid{max-width:1440px;margin:0 auto;padding:0 2rem 8rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;overflow:hidden}
 .vault-item{break-inside:avoid;margin-bottom:1.25rem;cursor:pointer;display:block;width:100%}
 .vault-frame{position:relative;overflow:hidden;background:#0d0d0d}
 .vault-frame::before{content:'';position:absolute;inset:0;z-index:2;border:1px solid rgba(200,169,110,0.18);pointer-events:none;transition:border-color 0.4s}
