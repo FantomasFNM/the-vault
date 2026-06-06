@@ -96,6 +96,37 @@ body::after{
   object-fit:cover;object-position:center;
   opacity:0.4;filter:brightness(0.6) saturate(1.2);
 }
+/* SPINNING NODE ORB OVERLAY */
+.node-spin-wrap{
+  position:absolute;
+  top:50%;left:58%;
+  transform:translate(-50%,-50%);
+  width:280px;height:280px;
+  z-index:1;pointer-events:none;
+}
+.node-spin-outer{
+  position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,transparent 0%,rgba(212,168,71,0.7) 25%,rgba(26,138,114,0.8) 50%,rgba(212,168,71,0.7) 75%,transparent 100%);
+  animation:node-spin 6s linear infinite;
+  filter:blur(3px);
+  box-shadow:0 0 40px rgba(212,168,71,0.4),0 0 80px rgba(26,138,114,0.3);
+}
+.node-spin-mid{
+  position:absolute;inset:25px;border-radius:50%;
+  background:conic-gradient(from 180deg,transparent 0%,rgba(26,138,114,0.8) 30%,rgba(212,168,71,0.9) 60%,transparent 100%);
+  animation:node-spin 4s linear infinite reverse;
+  filter:blur(2px);
+  box-shadow:0 0 30px rgba(26,138,114,0.5);
+}
+.node-spin-inner{
+  position:absolute;inset:70px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,220,100,0.9) 0%,rgba(212,168,71,0.7) 30%,rgba(26,138,114,0.5) 70%,transparent 100%);
+  animation:node-pulse-orb 2.5s ease-in-out infinite;
+  box-shadow:0 0 50px rgba(212,168,71,0.6),0 0 100px rgba(212,168,71,0.3);
+}
+@keyframes node-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes node-pulse-orb{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:1;transform:scale(1.15)}}
+
 .node-hero-content{
   position:relative;z-index:2;
   text-align:center;padding:4rem 2rem;
@@ -389,6 +420,11 @@ body::after{
   <section class="node-hero">
     <div class="node-hero-bg"></div>
     <img src="images/Limbo - The Node.png" alt="The Node Chamber" onerror="this.style.display='none'">
+    <div class="node-spin-wrap">
+      <div class="node-spin-outer"></div>
+      <div class="node-spin-mid"></div>
+      <div class="node-spin-inner"></div>
+    </div>
     <div class="node-hero-content">
       <div class="access-logged">// ACCESS LOGGED — TIMESTAMP: <span id="ts"></span> //</div>
       <div class="node-title">THE <span>NODE</span></div>
