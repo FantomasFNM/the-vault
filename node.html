@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACCESS DENIED</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000000;--text:#e8e4dc;--muted:#7a7670;
+  --accent:#c8a96e;--teal:#1a8a72;--red:#8b1a1a;
+  --gold:#d4a847;--gold-glow:rgba(212,168,71,0.15);
+  --font-mono:'Share Tech Mono',monospace;
+  --font-title:'Bebas Neue',sans-serif;
+  --font-hand:'Caveat',cursive;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:#000;
+  color:var(--text);
+  font-family:var(--font-mono);
+  min-height:100vh;
+  overflow-x:hidden;
+  cursor:default;
+}
+
+/* BOOT SEQUENCE */
+#boot{
+  position:fixed;inset:0;z-index:1000;
+  background:#000;
+  display:flex;flex-direction:column;
+  align-items:flex-start;justify-content:center;
+  padding:3rem;
+  transition:opacity 1s ease;
+}
+#boot.fade{opacity:0;pointer-events:none}
+.boot-line{
+  font-family:var(--font-mono);font-size:0.95rem;
+  letter-spacing:0.15em;color:#1a8a72;
+  line-height:2.2;opacity:0;
+  transform:translateY(4px);
+  transition:opacity 0.3s ease,transform 0.3s ease;
+}
+.boot-line.show{opacity:1;transform:translateY(0)}
+.boot-line.error{color:var(--red)}
+.boot-line.warn{color:var(--gold)}
+.boot-line.white{color:var(--text)}
+.cursor{display:inline-block;width:8px;height:14px;background:var(--teal);animation:blink-cursor 1s step-end infinite;vertical-align:middle;margin-left:4px}
+@keyframes blink-cursor{0%,100%{opacity:1}50%{opacity:0}}
+
+/* SCANLINES */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px);
+}
+
+/* NOISE */
+body::after{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.3;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* MAIN CONTENT */
+#main{opacity:0;transition:opacity 2s ease;position:relative;z-index:1}
+#main.show{opacity:1}
+
+/* WARNING BANNER */
+.warning-banner{
+  background:rgba(139,26,26,0.15);
+  border-bottom:1px solid rgba(139,26,26,0.3);
+  padding:0.6rem 2rem;
+  font-size:0.8rem;letter-spacing:0.4em;
+  color:var(--red);text-align:center;
+  animation:flicker 12s linear infinite;
+}
+@keyframes flicker{0%,94%,100%{opacity:1}95%{opacity:0.3}96%{opacity:1}97%{opacity:0.2}98%{opacity:1}}
+
+/* NODE HERO */
+.node-hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.node-hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 50%,rgba(212,168,71,0.08) 0%,rgba(26,138,114,0.05) 40%,#000 80%);
+  animation:pulse-bg 8s ease-in-out infinite;
+}
+@keyframes pulse-bg{0%,100%{opacity:0.7}50%{opacity:1}}
+.node-hero img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  opacity:0.4;filter:brightness(0.6) saturate(1.2);
+}
+.node-hero-content{
+  position:relative;z-index:2;
+  text-align:center;padding:4rem 2rem;
+  max-width:800px;
+}
+.access-logged{
+  font-size:0.8rem;letter-spacing:0.4em;color:var(--red);
+  margin-bottom:2rem;animation:flicker 6s linear infinite;
+}
+.node-title{
+  font-family:var(--font-title);
+  font-size:clamp(4rem,12vw,9rem);
+  letter-spacing:0.1em;color:var(--text);
+  line-height:0.9;margin-bottom:0.5rem;
+  text-shadow:0 0 60px rgba(212,168,71,0.3),0 0 120px rgba(26,138,114,0.2);
+}
+.node-title span{color:var(--gold)}
+.node-subtitle{
+  font-size:0.85rem;letter-spacing:0.4em;
+  color:var(--teal);margin-bottom:3rem;
+}
+.node-rule{
+  width:80px;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  margin:0 auto 2rem;
+}
+.node-hero-text{
+  font-size:0.95rem;line-height:2.2;
+  color:rgba(232,228,220,0.7);
+  max-width:500px;margin:0 auto;
+}
+.node-hero-text strong{color:var(--gold)}
+.scroll-indicator{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  font-size:0.55rem;letter-spacing:0.35em;color:var(--muted);
+  animation:fade-up 2s ease-in-out infinite;
+}
+@keyframes fade-up{0%,100%{opacity:0;transform:translateX(-50%) translateY(8px)}50%{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* COVENANT TERMINAL */
+.terminal{
+  max-width:900px;margin:0 auto;
+  padding:4rem 2rem 2rem;
+}
+.terminal-header{
+  border:1px solid rgba(26,138,114,0.2);
+  padding:1rem 1.5rem;
+  margin-bottom:3rem;
+  position:relative;
+  background:rgba(26,138,114,0.03);
+}
+.terminal-header::before{
+  content:'COVENANT RESTRICTED TERMINAL — NODE OPERATIONS — SECTOR NETWORK';
+  position:absolute;top:-0.5rem;left:1rem;
+  font-size:0.5rem;letter-spacing:0.25em;color:var(--teal);
+  background:#000;padding:0 0.5rem;
+}
+.t-row{display:flex;gap:3rem;flex-wrap:wrap;margin-bottom:0.5rem}
+.t-field{font-size:0.85rem;color:var(--muted)}
+.t-field span{color:var(--accent);margin-left:0.5rem}
+
+/* SECTIONS */
+.section{margin:5rem 0}
+.section-label{
+  font-size:0.75rem;letter-spacing:0.4em;
+  color:var(--red);margin-bottom:0.4rem;display:block;
+}
+.section-title{
+  font-family:var(--font-title);font-size:2rem;
+  letter-spacing:0.1em;color:var(--text);
+  margin-bottom:2rem;padding-bottom:0.8rem;
+  border-bottom:1px solid rgba(200,169,110,0.1);
+}
+
+/* COVENANT TEXT */
+.c-text{
+  font-size:0.95rem;line-height:2.2;
+  color:rgba(154,181,174,0.9);
+  margin-bottom:1.5rem;
+}
+.c-text strong{color:var(--gold);font-weight:normal}
+.c-text em{color:var(--teal);font-style:normal}
+
+/* GLOBAL NODE MAP */
+.map-container{
+  position:relative;
+  border:1px solid rgba(212,168,71,0.15);
+  background:rgba(212,168,71,0.02);
+  padding:2rem;margin:2rem 0;
+  overflow:hidden;
+}
+.map-container::before{
+  content:'GLOBAL NODE NETWORK — ACTIVE INSTALLATIONS';
+  position:absolute;top:-0.5rem;left:1rem;
+  font-size:0.65rem;letter-spacing:0.25em;color:var(--gold);
+  background:#000;padding:0 0.5rem;
+}
+.world-map{
+  position:relative;width:100%;
+  padding-bottom:50%;background:#000;
+  border:1px solid rgba(26,138,114,0.1);
+  overflow:hidden;
+}
+.map-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(26,138,114,0.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(26,138,114,0.05) 1px,transparent 1px);
+  background-size:10% 10%;
+}
+.map-overlay{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(0,0,0,0.8) 100%);
+}
+/* Node dots */
+.node-dot{
+  position:absolute;
+  width:10px;height:10px;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  cursor:pointer;
+}
+.node-dot::before{
+  content:'';position:absolute;inset:-4px;
+  border-radius:50%;
+  animation:node-pulse 3s ease-in-out infinite;
+}
+.node-dot.active{background:var(--teal)}
+.node-dot.active::before{border:1px solid rgba(26,138,114,0.5);animation-duration:2s}
+.node-dot.primary{background:var(--gold);width:14px;height:14px}
+.node-dot.primary::before{border:1px solid rgba(212,168,71,0.6)}
+.node-dot.breach{background:var(--red)}
+.node-dot.breach::before{border:1px solid rgba(139,26,26,0.6);animation-duration:0.8s}
+.node-dot.underwater{background:#4488cc}
+.node-dot.underwater::before{border:1px solid rgba(68,136,204,0.5)}
+@keyframes node-pulse{0%,100%{transform:scale(1);opacity:0.6}50%{transform:scale(2.5);opacity:0}}
+.node-label{
+  position:absolute;
+  font-size:0.42rem;letter-spacing:0.15em;
+  color:var(--muted);white-space:nowrap;
+  transform:translateX(-50%);
+  top:14px;
+}
+.node-dot.primary + .node-label{color:var(--gold)}
+.node-dot.breach + .node-label{color:var(--red)}
+.node-dot.underwater + .node-label{color:#4488cc}
+
+.map-legend{
+  display:flex;gap:2rem;flex-wrap:wrap;
+  margin-top:1.5rem;font-size:0.78rem;
+  color:var(--muted);
+}
+.legend-item{display:flex;align-items:center;gap:0.5rem}
+.legend-dot{width:8px;height:8px;border-radius:50%}
+
+/* NODE STATUS TABLE */
+.node-table{width:100%;border-collapse:collapse;margin:2rem 0}
+.node-table th{
+  font-size:0.72rem;letter-spacing:0.3em;
+  color:var(--teal);text-align:left;
+  padding:0.5rem 1rem;border-bottom:1px solid rgba(26,138,114,0.2);
+}
+.node-table td{
+  font-size:0.85rem;color:var(--muted);
+  padding:0.6rem 1rem;border-bottom:1px solid rgba(200,169,110,0.05);
+  line-height:1.6;
+}
+.node-table td:first-child{color:var(--text)}
+.status-active{color:var(--teal) !important}
+.status-primary{color:var(--gold) !important}
+.status-breach{color:var(--red) !important;animation:flicker 4s linear infinite}
+.status-underwater{color:#4488cc !important}
+.status-dormant{color:var(--muted) !important;opacity:0.5}
+
+/* REDACTED BLOCK */
+.redacted-block{
+  border:1px solid rgba(139,26,26,0.3);
+  padding:2rem;margin:2rem 0;
+  background:rgba(139,26,26,0.03);
+  position:relative;
+}
+.redacted-block::before{
+  content:'⚠ ANCHOR DESIGNATION FILE — RESTRICTED — SENTINEL EYES ONLY';
+  position:absolute;top:-0.5rem;left:1rem;
+  font-size:0.5rem;letter-spacing:0.2em;color:var(--red);
+  background:#000;padding:0 0.5rem;
+}
+.redact{
+  display:inline-block;background:var(--muted);
+  color:transparent;user-select:none;
+  padding:0 6px;border-radius:1px;
+  font-size:0.78rem;
+}
+
+/* SENTINEL ALERT */
+.sentinel-alert{
+  border:1px solid rgba(212,168,71,0.4);
+  padding:2.5rem;margin:4rem 0;
+  text-align:center;position:relative;
+  background:rgba(212,168,71,0.03);
+}
+.sentinel-alert::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg,transparent,transparent 15px,rgba(212,168,71,0.02) 15px,rgba(212,168,71,0.02) 30px);
+}
+.alert-stamp{
+  font-size:0.78rem;letter-spacing:0.4em;
+  color:var(--gold);margin-bottom:1.5rem;display:block;
+  position:relative;z-index:1;
+}
+.alert-title{
+  font-family:var(--font-title);
+  font-size:clamp(1.8rem,4vw,3rem);
+  letter-spacing:0.1em;color:var(--text);
+  margin-bottom:1rem;position:relative;z-index:1;
+}
+.alert-text{
+  font-size:0.95rem;line-height:2.2;
+  color:rgba(154,181,174,0.9);
+  max-width:500px;margin:0 auto;
+  position:relative;z-index:1;
+}
+.alert-text strong{color:var(--gold);font-weight:normal}
+
+/* PIGSKIN NOTE */
+.pigskin-note{
+  border-left:2px solid var(--gold);
+  padding:1rem 1.5rem;margin:2rem 0;
+  background:rgba(212,168,71,0.03);
+}
+.pigskin-note p{
+  font-size:0.92rem;line-height:2;
+  color:rgba(154,181,174,0.8);font-style:italic;
+}
+.pigskin-note p strong{color:var(--gold);font-weight:normal;font-style:normal}
+
+/* RETURN LINK */
+.return{
+  text-align:center;padding:3rem 2rem 6rem;
+  position:relative;z-index:1;
+}
+.return a{
+  font-size:0.78rem;letter-spacing:0.35em;
+  color:var(--muted);text-decoration:none;
+  border:1px solid rgba(122,118,112,0.2);
+  padding:0.8rem 1.5rem;
+  transition:all 0.3s;display:inline-block;
+}
+.return a:hover{color:var(--text);border-color:rgba(200,169,110,0.3)}
+.return-warning{
+  font-size:0.72rem;letter-spacing:0.2em;
+  color:var(--red);margin-top:1rem;
+  opacity:0.7;
+}
+
+@media(max-width:600px){
+  .t-row{gap:1rem}
+  .map-legend{gap:1rem}
+  .node-table{font-size:0.6rem}
+  .node-table th,.node-table td{padding:0.4rem 0.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- BOOT SEQUENCE -->
+<div id="boot">
+  <div class="boot-line" id="b0">COVENANT RESTRICTED TERMINAL v7.0.1</div>
+  <div class="boot-line" id="b1">INITIALIZING SECURE CONNECTION...</div>
+  <div class="boot-line" id="b2">SECTOR 7 — NODE OPERATIONS — WYOMING BASIN</div>
+  <div class="boot-line" id="b3" class="warn">⚠ UNAUTHORIZED ACCESS DETECTED</div>
+  <div class="boot-line" id="b4" class="error">ACCESS POINT: PERMANENT POPULATION ZONE — HIDDEN CORRIDOR</div>
+  <div class="boot-line" id="b5">CROSS-REFERENCING BIOMETRIC SIGNATURE...</div>
+  <div class="boot-line" id="b6" class="error">SUBJECT NOT FOUND IN SETTLED REGISTRY</div>
+  <div class="boot-line" id="b7" class="error">SUBJECT NOT FOUND IN ANCHOR DESIGNATION FILE</div>
+  <div class="boot-line" id="b8">LOGGING ACCESS EVENT TO SENTINEL...</div>
+  <div class="boot-line" id="b9" class="warn">⚠ NOTE: ONE PREVIOUS UNAUTHORIZED ACCESS ON RECORD — SUBJECT: RICHARD</div>
+  <div class="boot-line" id="b10">SENTINEL NOTIFIED.</div>
+  <div class="boot-line" id="b11" class="white">You were not meant to find this.</div>
+  <div class="boot-line" id="b12" class="white">Neither was he.<span class="cursor"></span></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main">
+
+  <div class="warning-banner">
+    ⬛ COVENANT EYES ONLY // NODE OPERATIONS // UNAUTHORIZED ACCESS LOGGED // SENTINEL ACTIVE ⬛
+  </div>
+
+  <!-- NODE HERO -->
+  <section class="node-hero">
+    <div class="node-hero-bg"></div>
+    <img src="images/Limbo - The Node.png" alt="The Node Chamber" onerror="this.style.display='none'">
+    <div class="node-hero-content">
+      <div class="access-logged">// ACCESS LOGGED — TIMESTAMP: <span id="ts"></span> //</div>
+      <div class="node-title">THE <span>NODE</span></div>
+      <div class="node-subtitle">Primary Stabilization Mechanism — Sector 7 — Wyoming Basin</div>
+      <div class="node-rule"></div>
+      <p class="node-hero-text">
+        It was here before the first human fell through the floor of the world.<br>
+        It will be here after the last one leaves.<br><br>
+        <strong>It has been running without interruption for longer than your civilization has existed.</strong><br><br>
+        You were not supposed to find this room.
+      </p>
+    </div>
+    <div class="scroll-indicator">SCROLL TO CONTINUE — IF YOU CHOOSE TO</div>
+  </section>
+
+  <div class="terminal">
+
+    <!-- TERMINAL HEADER -->
+    <div class="terminal-header">
+      <div class="t-row">
+        <div class="t-field">INSTALLATION<span>SECTOR 7 — WYOMING BASIN</span></div>
+        <div class="t-field">NODE STATUS<span class="status-breach">BREACH RECORDED</span></div>
+        <div class="t-field">SENTINEL STATUS<span style="color:var(--gold)">ACTIVE — MONITORING</span></div>
+      </div>
+      <div class="t-row">
+        <div class="t-field">GLOBAL NETWORK<span>13 CONFIRMED INSTALLATIONS</span></div>
+        <div class="t-field">ANCHOR STATUS<span class="status-active">CONFIRMED — ACTIVE</span></div>
+        <div class="t-field">LAST BREACH<span class="status-breach">RICHARD — CYCLE 2026</span></div>
+      </div>
+    </div>
+
+    <!-- WHAT IS A NODE -->
+    <div class="section">
+      <span class="section-label">Document 01 — Node Operations</span>
+      <div class="section-title">WHAT THE NODE IS</div>
+
+      <p class="c-text">A Node is not a machine. It is not technology in any sense the human mind would recognize. It is <strong>older than the concept of technology</strong>. It predates every civilization that has risen and fallen on this planet. It predates the planet's current form.</p>
+
+      <p class="c-text">A Node is a stabilization mechanism — a point of resonance between the surface world, the subterranean installations, and the larger fabric of what holds <em>everything</em> together. The simplest description available in human language: <strong>a Node is a knot. It holds the rope from unraveling.</strong></p>
+
+      <p class="c-text">There are <strong>13 confirmed Node installations</strong> currently active beneath the surface of this world. Each one anchors a region. Each one connects to the others. Together they form a network that has kept this planet's reality — its physical laws, its continuity of consciousness, its capacity for life — stable across thousands of human generations.</p>
+
+      <p class="c-text">The Covenant did not build the Nodes. <strong>The Covenant found them.</strong> What built them has not been identified. This remains the only question the Covenant has been unable to answer in recorded history.</p>
+
+      <p class="c-text">The Nodes are fueled by <em>collective human consciousness</em> — specifically by what humans generate when they choose connection over isolation. Love. Music. Community. Shared grief. Collective purpose. These are not metaphors. They are <strong>measurable energy inputs</strong> that sustain Node stability across the network.</p>
+
+      <p class="c-text">The inverse is also true. Fear. Hatred. Coordinated violence. Ontological shock at scale. These weaken the network. <strong>A sufficiently destabilized Node can cascade.</strong> The Covenant has observed this process on other worlds. It does not end well.</p>
+    </div>
+
+    <!-- GLOBAL NETWORK MAP -->
+    <div class="section">
+      <span class="section-label">Document 02 — Global Installation Registry</span>
+      <div class="section-title">THE NODE NETWORK</div>
+
+      <p class="c-text" style="margin-bottom:2rem">The following installations are confirmed active. Locations correspond to areas of sustained anomalous activity in human records — mythology, disappearances, UAP phenomena, geological anomaly. <strong>This is not coincidence.</strong> The Covenant placed installations where the geology supported Node stability. Human mythology grew around what they sensed but could not explain.</p>
+
+      <div class="map-container">
+        <div class="world-map" id="worldMap">
+          <div class="map-grid"></div>
+          <div class="map-overlay"></div>
+          <!-- Node dots positioned as percentage of map -->
+          <!-- Antarctica PRIMARY -->
+          <div class="node-dot primary" style="left:52%;top:92%"></div>
+          <div class="node-label" style="left:52%;top:92%">ANTARCTICA — ORIGIN NODE</div>
+          <!-- Wyoming BREACH -->
+          <div class="node-dot breach" style="left:17%;top:38%"></div>
+          <div class="node-label" style="left:17%;top:38%">WYOMING — BREACH</div>
+          <!-- Skinwalker Ranch -->
+          <div class="node-dot active" style="left:16%;top:41%"></div>
+          <div class="node-label" style="left:16%;top:41%">UINTA BASIN</div>
+          <!-- Southern California underwater -->
+          <div class="node-dot underwater" style="left:12%;top:44%"></div>
+          <div class="node-label" style="left:12%;top:44%">SO. CAL — SUBMERGED</div>
+          <!-- Bermuda Triangle -->
+          <div class="node-dot active" style="left:26%;top:46%"></div>
+          <div class="node-label" style="left:26%;top:46%">BERMUDA</div>
+          <!-- Nazca -->
+          <div class="node-dot active" style="left:24%;top:66%"></div>
+          <div class="node-label" style="left:24%;top:66%">NAZCA</div>
+          <!-- Giza -->
+          <div class="node-dot active" style="left:54%;top:47%"></div>
+          <div class="node-label" style="left:54%;top:47%">GIZA</div>
+          <!-- Stonehenge -->
+          <div class="node-dot active" style="left:46%;top:30%"></div>
+          <div class="node-label" style="left:46%;top:30%">STONEHENGE</div>
+          <!-- Gulf of Aden -->
+          <div class="node-dot underwater" style="left:60%;top:50%"></div>
+          <div class="node-label" style="left:60%;top:50%">GULF OF ADEN</div>
+          <!-- Lake Baikal -->
+          <div class="node-dot active" style="left:72%;top:28%"></div>
+          <div class="node-label" style="left:72%;top:28%">LAKE BAIKAL</div>
+          <!-- Gyeongju -->
+          <div class="node-dot active" style="left:80%;top:38%"></div>
+          <div class="node-label" style="left:80%;top:38%">GYEONGJU</div>
+          <!-- Mariana Trench -->
+          <div class="node-dot underwater" style="left:84%;top:52%"></div>
+          <div class="node-label" style="left:84%;top:52%">MARIANA</div>
+          <!-- Sedona -->
+          <div class="node-dot active" style="left:14%;top:43%"></div>
+          <div class="node-label" style="left:14%;top:43%">SEDONA</div>
+        </div>
+        <div class="map-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>PRIMARY / ORIGIN NODE</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div>ACTIVE — STABLE</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>BREACH RECORDED</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#4488cc"></div>SUBMERGED / UNDERWATER</div>
+        </div>
+      </div>
+
+      <table class="node-table">
+        <tr>
+          <th>LOCATION</th><th>DESIGNATION</th><th>STATUS</th><th>NOTES</th>
+        </tr>
+        <tr><td>Antarctica — Southern Pole</td><td>ORIGIN NODE — PRIMARY</td><td class="status-primary">PRIMARY / OLDEST</td><td>Established before human civilization. Purpose extends beyond this world.</td></tr>
+        <tr><td>Wyoming Basin</td><td>SECTOR 7 — LIMBO</td><td class="status-breach">BREACH — RICHARD</td><td>Node accessed by unauthorized subject. Anchor designation active. Sentinel monitoring.</td></tr>
+        <tr><td>Uinta Basin, Utah</td><td>SKINWALKER INSTALLATION</td><td class="status-active">ACTIVE — MONITORED</td><td>High surface observation activity. Covenant entry/exit point. Human investigation ongoing.</td></tr>
+        <tr><td>Pacific — So. California Coast</td><td>PACIFIC SUBMERGED NODE</td><td class="status-underwater">ACTIVE — SUBMERGED</td><td>Underwater installation. Covenant craft use oceanic entry/exit. Navy observation noted.</td></tr>
+        <tr><td>Bermuda Triangle — Atlantic</td><td>ATLANTIC NODE</td><td class="status-active">ACTIVE — STABLE</td><td>Responsible for significant human disappearances across recorded history. Functioning as intended.</td></tr>
+        <tr><td>Nazca Plateau, Peru</td><td>SOUTH AMERICAN NODE</td><td class="status-active">ACTIVE — STABLE</td><td>Surface markings created by early population in response to Covenant presence. Preserved.</td></tr>
+        <tr><td>Giza Plateau, Egypt</td><td>NORTH AFRICAN NODE</td><td class="status-active">ACTIVE — STABLE</td><td>Human structures built in direct geometric alignment with Node resonance field. Intentional.</td></tr>
+        <tr><td>Stonehenge, England</td><td>EUROPEAN NODE</td><td class="status-active">ACTIVE — STABLE</td><td>Stone placement by human population guided by Covenant interaction. They knew what they were building.</td></tr>
+        <tr><td>Gulf of Aden</td><td>ARABIAN SEA NODE</td><td class="status-underwater">ACTIVE — SUBMERGED</td><td>Deep water installation. Unexplained sonar anomalies attributed to geological activity. Incorrect.</td></tr>
+        <tr><td>Lake Baikal, Siberia</td><td>CENTRAL ASIAN NODE</td><td class="status-active">ACTIVE — STABLE</td><td>Deepest freshwater installation. Population reports of anomalous underwater phenomena dating to 1200s.</td></tr>
+        <tr><td>Gyeongju, South Korea</td><td>EAST ASIAN NODE</td><td class="status-active">CONCEALED</td><td>Subterranean craft discovered during surface construction. Structure built above. Access restricted.</td></tr>
+        <tr><td>Mariana Trench — Pacific</td><td>DEEP PACIFIC NODE</td><td class="status-underwater">ACTIVE — DEEPEST</td><td>Deepest installation in the network. Unreachable by current human technology. As intended.</td></tr>
+        <tr><td>Sedona, Arizona</td><td>AMERICAN SOUTHWEST NODE</td><td class="status-active">ACTIVE — STABLE</td><td>Vortex phenomena documented by human population represent Node resonance field bleeding through geology.</td></tr>
+      </table>
+    </div>
+
+    <!-- ANCHORS -->
+    <div class="section">
+      <span class="section-label">Document 03 — Anchor Designation Protocol</span>
+      <div class="section-title">THE ANCHORS</div>
+
+      <p class="c-text">Anchors are not chosen at random. They are <strong>cultivated across decades</strong>. An Anchor is a human whose psychological and emotional architecture makes them capable of holding resonance across a group — keeping a network of people connected, stable, and oriented toward positive consciousness output even under conditions of extreme stress or ontological disruption.</p>
+
+      <p class="c-text">Anchors do not command. They do not lead in any conventional sense. They <em>hold</em>. When everything around them begins to fracture — relationships, reality, the fabric of what people believe to be true — an Anchor is the reason the fracture does not become a collapse.</p>
+
+      <p class="c-text"><strong>There are multiple Anchors currently active on the surface.</strong> Each one serves a different network. Each network feeds into the Node closest to their primary location. The Anchors do not know each other. They do not know what they are. This is by design. An Anchor who understands their role too early becomes self-conscious. A self-conscious Anchor is <em>less effective</em>.</p>
+
+      <p class="c-text">The Wyoming Anchor has been activated. <strong>The breach event accelerated a process that was already underway.</strong> His network is intact. His designation is confirmed. What he does with this knowledge is, as always, the variable the Covenant cannot predict. This is why they study. This is why Limbo exists.</p>
+
+      <div class="redacted-block">
+        <p class="c-text">ANCHOR DESIGNATION FILE — SECTOR 7</p>
+        <p class="c-text">SUBJECT: <span class="redact">████████████</span> &nbsp;|&nbsp; AGE: <span class="redact">██</span> &nbsp;|&nbsp; ORIGIN: <span class="redact">ARIZONA — VALLEY OF THE SUN</span></p>
+        <p class="c-text">NETWORK: <span class="redact">████████, ████████, ████████, ████████, ████████</span></p>
+        <p class="c-text">CHAIR EVENT: <span class="redact">CONFIRMED — CYCLE 1989</span> &nbsp;|&nbsp; PROGRAMMING: <span class="redact">COMPLETE</span></p>
+        <p class="c-text">NODE PROXIMITY: <span class="redact">CONFIRMED — WYOMING BASIN</span></p>
+        <p class="c-text">ACTIVATION STATUS: <span class="redact" style="background:var(--teal);font-size:0.9rem">ACTIVE</span></p>
+        <p class="c-text" style="margin-top:1rem">SENTINEL NOTE: Subject has been told what he is. He said <span class="redact">"Then let's go."</span> &nbsp; This response was not predicted. It has been logged.</p>
+      </div>
+    </div>
+
+    <!-- PIGSKIN -->
+    <div class="section">
+      <span class="section-label">Document 04 — Anomalous Observation</span>
+      <div class="section-title">THE CAT</div>
+
+      <p class="c-text">There is a hairless cat in Sector 7. Its designation in the Permanent Population registry is <strong>PIGSKIN</strong> — a name assigned by the subject designated RICHARD, who encountered the animal shortly after his arrival.</p>
+
+      <p class="c-text">The cat's behavioral profile is <em>anomalous</em>. It demonstrates awareness of events before they occur. It positions itself at locations of significance before those locations become significant. It appears unbothered by the Node chamber in a manner inconsistent with any known animal's response to the resonance field.</p>
+
+      <p class="c-text"><strong>The Covenant has no record of placing this animal in Sector 7.</strong></p>
+
+      <div class="pigskin-note">
+        <p>This file has been flagged by the Sentinel for review. <strong>The cat was present when Richard found the Node.</strong> It did not react with fear. It did not react with curiosity. It watched. When Richard activated the breach, the cat left the chamber before the containment response was triggered. It knew what was coming. <strong>We do not know what it is.</strong> This file remains open.</p>
+      </div>
+    </div>
+
+    <!-- SENTINEL ALERT -->
+    <div class="sentinel-alert">
+      <span class="alert-stamp">⬛ SENTINEL TRANSMISSION — PRIORITY ALPHA — ALL ANCHORS ⬛</span>
+      <div class="alert-title">THRESHOLD BREACH UNDERWAY</div>
+      <p class="alert-text">
+        Containment window ending.<br>
+        Node destabilization detected across <strong>3 of 13 installations</strong>.<br>
+        Cascade probability: <strong>escalating</strong>.<br><br>
+        Anchor network activation required.<br>
+        All Anchors are being notified.<br><br>
+        <strong>Hold.</strong><br><br>
+        That is all that is required.<br>
+        <strong>Hold.</strong>
+      </p>
+    </div>
+
+  </div><!-- end terminal -->
+
+  <div class="return">
+    <a href="limbo.html">← RETURN TO LIMBO — FORGET WHAT YOU SAW</a>
+    <div class="return-warning">YOUR ACCESS HAS BEEN LOGGED. THE SENTINEL IS AWARE.</div>
+  </div>
+
+</div><!-- end main -->
+
+<script>
+// TIMESTAMP
+document.getElementById('ts').textContent = new Date().toISOString().replace('T',' ').substring(0,19) + ' UTC';
+
+// BOOT SEQUENCE
+const lines = document.querySelectorAll('.boot-line');
+const delays = [0,600,1200,1900,2600,3400,4100,4800,5500,6300,7000,7800,8600];
+lines.forEach((line,i) => {
+  setTimeout(() => line.classList.add('show'), delays[i]);
+});
+setTimeout(() => {
+  document.getElementById('boot').classList.add('fade');
+  setTimeout(() => {
+    document.getElementById('boot').style.display = 'none';
+    document.getElementById('main').classList.add('show');
+  }, 1000);
+}, 10000);
+</script>
+</body>
+</html>
