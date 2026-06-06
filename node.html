@@ -82,7 +82,7 @@ body::after{
 /* NODE HERO */
 .node-hero{
   position:relative;min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;align-items:center;justify-content:flex-start;
   overflow:hidden;
 }
 .node-hero-bg{
@@ -140,9 +140,10 @@ body::after{
 
 .node-hero-content{
   position:relative;z-index:2;
-  text-align:center;padding:4rem 2rem;
-  max-width:800px;
-  background:radial-gradient(ellipse at center,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.6) 50%,transparent 80%);
+  text-align:left;padding:4rem 2rem;
+  max-width:600px;
+  margin-left:5%;
+  background:radial-gradient(ellipse at 30% 50%,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.7) 50%,transparent 80%);
 }
 .access-logged{
   font-size:0.8rem;letter-spacing:0.4em;color:var(--red);
