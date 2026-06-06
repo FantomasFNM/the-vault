@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIMBO — Classified Operational Sector // The Covenant Beneath</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;600;700&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000000;--text:#e8e4dc;--muted:#7a7670;
+  --accent:#c8a96e;--teal:#1a8a72;--teal-glow:rgba(26,138,114,0.15);
+  --border:rgba(200,169,110,0.12);--red:#8b1a1a;--red-glow:rgba(139,26,26,0.2);
+  --font-title:'Bebas Neue',sans-serif;
+  --font-caption:'Caveat',cursive;
+  --font-body:'Barlow',sans-serif;
+  --font-mono:'Share Tech Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:#000000;color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 20% 0%,rgba(26,138,114,0.04) 0%,transparent 60%),
+  radial-gradient(ellipse at 80% 100%,rgba(200,169,110,0.03) 0%,transparent 60%)}
+
+/* NOISE OVERLAY */
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity:0.4}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,9,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;height:62px;display:flex;align-items:center;justify-content:space-between}
+.site-title{font-family:var(--font-title);font-size:1.35rem;letter-spacing:0.14em;color:var(--text);text-decoration:none}
+nav a{font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-left:2.2rem;transition:color 0.25s}
+nav a:hover{color:var(--accent)}
+nav a.active{color:var(--teal)}
+
+/* CLASSIFIED HERO */
+.classified-hero{position:relative;margin-top:62px;padding:0;overflow:hidden;min-height:480px;display:flex;align-items:center;justify-content:center;background:#000}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse at 50% 100%, rgba(26,138,114,0.12) 0%, transparent 70%),
+  radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.6) 0%, transparent 100%);
+  z-index:1}
+.hero-scanlines{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px)}
+.hero-content{position:relative;z-index:3;text-align:center;padding:4rem 2rem}
+.covenant-seal{width:80px;height:80px;margin:0 auto 2rem;opacity:0.6;animation:pulse-seal 4s ease-in-out infinite}
+@keyframes pulse-seal{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:0.8;transform:scale(1.03)}}
+.covenant-seal svg{width:100%;height:100%}
+.classification-stamp{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.4em;color:var(--red);text-transform:uppercase;margin-bottom:1.5rem;opacity:0.9;animation:flicker 8s linear infinite}
+@keyframes flicker{0%,95%,100%{opacity:0.9}96%{opacity:0.4}97%{opacity:0.9}98%{opacity:0.3}99%{opacity:0.9}}
+.hero-title{font-family:var(--font-title);font-size:clamp(6rem,18vw,14rem);letter-spacing:0.08em;color:var(--text);line-height:0.88;margin-bottom:1rem;text-shadow:0 0 80px rgba(26,138,114,0.3)}
+.hero-subtitle{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.35em;color:var(--teal);text-transform:uppercase;margin-bottom:2rem}
+.hero-redacted{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.2em;color:var(--muted);line-height:2}
+.redact{display:inline-block;background:var(--muted);color:transparent;user-select:none;padding:0 4px;border-radius:1px}
+.hero-rule{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--teal),transparent);margin:2rem auto}
+
+/* DOSSIER CONTAINER */
+.dossier{max-width:1100px;margin:0 auto;padding:0 2rem 8rem;position:relative;z-index:1}
+
+/* SECTION HEADERS */
+.section-header{display:flex;align-items:center;gap:1.5rem;margin:5rem 0 2rem}
+.section-header::before{content:'';width:3px;height:40px;background:linear-gradient(to bottom,transparent,var(--teal),transparent);flex-shrink:0}
+.section-label{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.35em;color:var(--red);text-transform:uppercase;display:block;margin-bottom:0.3rem}
+.section-title{font-family:var(--font-title);font-size:2.2rem;letter-spacing:0.1em;color:var(--text)}
+.section-rule{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent)}
+
+/* FIELD SUMMARY — COVENANT VOICE */
+.field-summary{border:1px solid rgba(26,138,114,0.2);padding:2.5rem;position:relative;background:rgba(26,138,114,0.03);margin-bottom:3rem}
+.field-summary::before{content:'COVENANT FIELD DOCUMENTATION — SECTOR 7 — LIMBO';position:absolute;top:-0.5rem;left:1.5rem;font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.25em;color:var(--teal);background:#000;padding:0 0.5rem}
+.field-summary::after{content:'';position:absolute;bottom:0;right:0;width:40px;height:40px;border-right:1px solid rgba(26,138,114,0.4);border-bottom:1px solid rgba(26,138,114,0.4)}
+.covenant-text{font-family:var(--font-mono);font-size:0.82rem;line-height:2;color:#9ab5ae;margin-bottom:1.5rem}
+.covenant-text:last-child{margin-bottom:0}
+.covenant-text strong{color:var(--teal);font-weight:normal}
+.data-row{display:flex;gap:3rem;margin-bottom:0.8rem;flex-wrap:wrap}
+.data-field{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
+.data-field span{color:var(--accent);margin-left:0.5rem}
+
+/* SURVEILLANCE GRID */
+.surv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2rem}
+.surv-item{cursor:pointer;position:relative}
+.surv-frame{position:relative;overflow:hidden;background:#0d0d0d;border:1px solid rgba(200,169,110,0.12)}
+.surv-frame::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(135deg,rgba(26,138,114,0.05) 0%,transparent 60%);transition:opacity 0.4s}
+.surv-frame::after{content:'REC ●';position:absolute;top:0.5rem;right:0.6rem;font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.15em;color:var(--red);z-index:3;opacity:0.7;animation:blink 2s step-end infinite}
+@keyframes blink{0%,100%{opacity:0.7}50%{opacity:0}}
+.surv-item:hover .surv-frame{border-color:rgba(26,138,114,0.4)}
+.surv-item:hover .surv-frame img{transform:scale(1.03);filter:brightness(1) saturate(1.1)}
+.surv-frame img{width:100%;height:auto;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.4s;filter:brightness(0.8) saturate(0.85)}
+.surv-meta{padding:0.6rem 0.5rem 0.2rem;background:#000}
+.surv-faction{font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.3em;color:var(--teal);text-transform:uppercase;margin-bottom:0.2rem}
+.surv-note{font-family:var(--font-caption);font-size:1.05rem;color:var(--muted);line-height:1.3;transition:color 0.3s}
+.surv-item:hover .surv-note{color:var(--text)}
+.surv-timestamp{font-family:var(--font-mono);font-size:0.5rem;color:rgba(122,118,112,0.5);margin-top:0.3rem}
+
+/* MAPS — FULL WIDTH FEATURE */
+.map-feature{margin:3rem 0;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.map-item{position:relative;cursor:pointer}
+.map-frame{position:relative;overflow:hidden;border:1px solid rgba(200,169,110,0.15)}
+.map-frame img{width:100%;height:auto;display:block;filter:sepia(0.3) brightness(0.9);transition:filter 0.4s}
+.map-item:hover .map-frame img{filter:sepia(0.1) brightness(1)}
+.map-frame::before{content:'CLASSIFIED SCHEMATIC';position:absolute;top:0.6rem;left:0.6rem;font-family:var(--font-mono);font-size:0.45rem;letter-spacing:0.3em;color:var(--accent);z-index:2;opacity:0.7}
+.map-meta{padding:0.8rem 0.5rem 0.2rem}
+.map-label{font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:0.3rem}
+.map-desc{font-family:var(--font-caption);font-size:1.1rem;color:var(--muted);line-height:1.4}
+
+/* FACTIONS */
+.factions{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0}
+.faction-card{border:1px solid var(--border);padding:1.5rem;position:relative;background:rgba(0,0,0,0.6)}
+.faction-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.faction-card.believers::before{background:linear-gradient(to right,transparent,var(--teal),transparent)}
+.faction-card.rationalists::before{background:linear-gradient(to right,transparent,var(--accent),transparent)}
+.faction-card.permanent::before{background:linear-gradient(to right,transparent,var(--red),transparent)}
+.faction-id{font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.3em;color:var(--muted);margin-bottom:0.6rem;text-transform:uppercase}
+.faction-name{font-family:var(--font-title);font-size:1.6rem;letter-spacing:0.08em;margin-bottom:0.8rem}
+.faction-card.believers .faction-name{color:var(--teal)}
+.faction-card.rationalists .faction-name{color:var(--accent)}
+.faction-card.permanent .faction-name{color:#c44}
+.faction-text{font-family:var(--font-mono);font-size:0.72rem;line-height:1.9;color:#9ab5ae}
+.faction-pop{font-family:var(--font-mono);font-size:0.6rem;color:var(--muted);margin-top:1rem;padding-top:0.8rem;border-top:1px solid var(--border)}
+.faction-pop span{color:var(--accent)}
+
+/* ANOMALOUS ARTIFACT — REPORTER'S MAP */
+.artifact-section{border:1px solid rgba(139,26,26,0.3);padding:2.5rem;position:relative;background:rgba(139,26,26,0.03);margin:3rem 0}
+.artifact-section::before{content:'⚠ ANOMALOUS ARTIFACT — RECOVERED HUMAN DOCUMENT — ORIGIN UNKNOWN';position:absolute;top:-0.5rem;left:1.5rem;font-family:var(--font-mono);font-size:0.52rem;letter-spacing:0.2em;color:var(--red);background:#000;padding:0 0.5rem}
+.artifact-note{font-family:var(--font-mono);font-size:0.72rem;line-height:1.9;color:#9ab5ae;margin-bottom:1.5rem;font-style:italic}
+.artifact-note strong{color:var(--red);font-weight:normal}
+.artifact-img-wrap{position:relative;max-width:500px;margin:0 auto}
+.artifact-img-wrap img{width:100%;height:auto;display:block;filter:sepia(0.5) brightness(0.85)}
+.artifact-scrawl{font-family:var(--font-caption);font-size:1.1rem;color:var(--accent);margin-top:1rem;text-align:center;line-height:1.6;opacity:0.8}
+
+/* ACCESS GATE */
+.access-gate{border:1px solid rgba(139,26,26,0.4);padding:3rem 2rem;text-align:center;position:relative;margin:5rem 0;background:rgba(139,26,26,0.04)}
+.access-gate::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(139,26,26,0.02) 10px,rgba(139,26,26,0.02) 20px);pointer-events:none}
+.gate-stamp{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.4em;color:var(--red);margin-bottom:1.5rem;display:block}
+.gate-title{font-family:var(--font-title);font-size:clamp(2.5rem,6vw,4rem);letter-spacing:0.1em;color:var(--text);margin-bottom:1rem}
+.gate-text{font-family:var(--font-mono);font-size:0.75rem;line-height:2;color:#9ab5ae;max-width:500px;margin:0 auto 2rem}
+.gate-form{display:flex;gap:0.8rem;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.gate-input{flex:1;min-width:220px;background:rgba(0,0,0,0.8);border:1px solid rgba(200,169,110,0.2);color:var(--text);font-family:var(--font-mono);font-size:0.8rem;padding:0.8rem 1rem;letter-spacing:0.1em;outline:none;transition:border-color 0.3s}
+.gate-input::placeholder{color:var(--muted);opacity:0.6}
+.gate-input:focus{border-color:rgba(26,138,114,0.5)}
+.gate-btn{background:transparent;border:1px solid var(--teal);color:var(--teal);font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;padding:0.8rem 1.5rem;cursor:pointer;transition:all 0.3s;white-space:nowrap}
+.gate-btn:hover{background:var(--teal);color:#000}
+.gate-disclaimer{font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.15em;color:var(--muted);margin-top:1.2rem;opacity:0.6}
+.gate-success{display:none;font-family:var(--font-mono);font-size:0.8rem;color:var(--teal);letter-spacing:0.2em;margin-top:1rem}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,5,0.96);align-items:center;justify-content:center;flex-direction:column;padding:2rem;backdrop-filter:blur(4px)}
+.lightbox.active{display:flex}
+.lb-img-wrap{position:relative;max-width:90vw;max-height:80vh}
+.lb-img-wrap::before{content:'';position:absolute;inset:-1px;z-index:1;border:1px solid rgba(26,138,114,0.35);pointer-events:none}
+#lbImg{max-width:90vw;max-height:80vh;object-fit:contain;display:block;position:relative;z-index:0}
+.lb-caption{font-family:var(--font-caption);font-size:1.4rem;color:var(--accent);margin-top:1.5rem;text-align:center;max-width:600px;line-height:1.3}
+.lb-close{position:fixed;top:1.5rem;right:2rem;font-size:1.8rem;color:var(--muted);cursor:pointer;background:none;border:none;line-height:1;transition:color 0.2s}
+.lb-close:hover{color:var(--text)}
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);font-size:2.5rem;color:rgba(200,169,110,0.3);cursor:pointer;background:none;border:none;padding:1rem;transition:color 0.2s;user-select:none}
+.lb-nav:hover{color:var(--accent)}
+.lb-prev{left:0.5rem}
+.lb-next{right:0.5rem}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+footer .left{font-family:var(--font-title);font-size:1rem;letter-spacing:0.12em;color:var(--muted)}
+footer .right{font-size:0.8rem;color:var(--muted)}
+footer a{color:var(--accent);text-decoration:none}
+
+/* DEPTH RULE */
+.depth-rule{display:flex;align-items:center;gap:1rem;margin:0 auto 1.5rem;max-width:1100px;padding:0 2rem}
+.depth-rule::before,.depth-rule::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--border),transparent)}
+.depth-rule span{font-family:var(--font-title);font-size:0.65rem;letter-spacing:0.3em;color:var(--muted);white-space:nowrap}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .surv-grid{grid-template-columns:1fr 1fr}
+  .map-feature{grid-template-columns:1fr}
+  .factions{grid-template-columns:1fr}
+  nav a{margin-left:1rem;font-size:0.65rem}
+  .hero-title{font-size:clamp(4rem,18vw,8rem)}
+}
+@media(max-width:480px){
+  .surv-grid{grid-template-columns:1fr}
+  header{padding:0 1rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://www.thecovenantbeneath.com" class="site-title">THE COVENANT BENEATH</a>
+  <nav>
+    <a href="https://www.thecovenantbeneath.com">Home</a>
+    <a href="https://fantomasfnm.github.io/the-vault/">The Vault</a>
+    <a href="#" class="active">Limbo</a>
+    <a href="https://www.amazon.com/dp/B0GY87LYWW" target="_blank">Get the Book</a>
+  </nav>
+</header>
+
+<!-- CLASSIFIED HERO -->
+<section class="classified-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-scanlines"></div>
+  <div class="hero-content">
+    <div class="covenant-seal">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(26,138,114,0.6)" stroke-width="1"/>
+        <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(26,138,114,0.3)" stroke-width="0.5"/>
+        <polygon points="50,18 58,38 80,38 63,51 70,72 50,59 30,72 37,51 20,38 42,38" fill="none" stroke="rgba(26,138,114,0.5)" stroke-width="0.8"/>
+        <circle cx="50" cy="50" r="5" fill="rgba(26,138,114,0.4)"/>
+        <text x="50" y="90" text-anchor="middle" font-family="Share Tech Mono, monospace" font-size="5" fill="rgba(26,138,114,0.5)" letter-spacing="3">THE COVENANT</text>
+      </svg>
+    </div>
+    <div class="classification-stamp">⬛ TOP SECRET // COVENANT EYES ONLY // SECTOR-7-LIMBO ⬛</div>
+    <div class="hero-title">LIMBO</div>
+    <div class="hero-subtitle">Operational Sector 7 — Subterranean Observation Station — Wyoming Basin</div>
+    <div class="hero-rule"></div>
+    <div class="hero-redacted">
+      DOCUMENT REF: <span class="redact">CVT-7-██████</span> &nbsp;|&nbsp; 
+      CYCLE: <span class="redact">████ — Present</span> &nbsp;|&nbsp; 
+      CLEARANCE: <span class="redact">SETTLED</span><br>
+      AUTHORIZED ACCESS: <span class="redact">NITZAKEN COUNCIL ONLY</span> &nbsp;|&nbsp; 
+      DISTRIBUTION: <span class="redact">RESTRICTED</span>
+    </div>
+  </div>
+</section>
+
+<div class="dossier">
+
+  <!-- FIELD SUMMARY -->
+  <div class="section-header">
+    <div>
+      <span class="section-label">Document 01</span>
+      <div class="section-title">FIELD SUMMARY</div>
+    </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="field-summary">
+    <div class="data-row">
+      <div class="data-field">DESIGNATION<span>LIMBO</span></div>
+      <div class="data-field">SECTOR<span>07 — WYOMING BASIN</span></div>
+      <div class="data-field">STATUS<span>ACTIVE / MONITORED</span></div>
+      <div class="data-field">POPULATION EST.<span>VARIABLE</span></div>
+    </div>
+    <div class="data-row" style="margin-bottom:2rem">
+      <div class="data-field">ANCHOR DESIGNATION<span>CONFIRMED — ACTIVE</span></div>
+      <div class="data-field">COVENANT CONTACT<span>AUTHORIZED</span></div>
+      <div class="data-field">SURFACE BREACH<span>RECORDED — CYCLE 2026</span></div>
+    </div>
+
+    <p class="covenant-text">
+      Sector 7 — designated <strong>LIMBO</strong> by its permanent population — is a functioning subterranean observation and staging station located beneath the Wyoming Basin. It is one of <strong>█ confirmed installations</strong> operating continuously beneath the surface of this world. Each installation operates independently. Each serves the same purpose.
+    </p>
+    <p class="covenant-text">
+      The station was not built. It was <strong>cultivated</strong>. Over thousands of cycles, Covenant engineering shaped existing geological formations into functional corridors, chambers, and hub structures suited for long-term human habitation and behavioral observation. The Nitzaken River — bioluminescent, sustained by Covenant-maintained mineral deposits — serves as both infrastructure and psychological anchor for the population.
+    </p>
+    <p class="covenant-text">
+      Residents arrive through <strong>the Receiving Zone</strong>. They do not choose to arrive. They are selected. The criteria have not changed in recorded history. The selection process is <strong>not random</strong>.
+    </p>
+    <p class="covenant-text">
+      The human population has, over time, organized into three observable behavioral factions. The Covenant does not intervene in factional dynamics. Observation is the purpose. <strong>Intervention is not authorized.</strong>
+    </p>
+  </div>
+
+  <!-- SURVEILLANCE IMAGERY -->
+  <div class="section-header">
+    <div>
+      <span class="section-label">Document 02</span>
+      <div class="section-title">RECONNAISSANCE IMAGERY</div>
+    </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="surv-grid" id="survGrid"></div>
+
+  <!-- SCHEMATICS -->
+  <div class="section-header">
+    <div>
+      <span class="section-label">Document 03</span>
+      <div class="section-title">RECOVERED SCHEMATICS</div>
+    </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <p class="covenant-text" style="margin-bottom:2rem;padding-left:1.2rem;border-left:1px solid var(--border)">The following architectural documents were recovered from the Nitzaken Hub administrative archive. They represent human-made copies of Covenant structural schematics — imprecise, but functional. Annotations in red are of human origin. <span style="color:var(--red)">Their accuracy has not been verified.</span></p>
+
+  <div class="map-feature" id="mapGrid"></div>
+
+  <!-- FACTIONS -->
+  <div class="section-header">
+    <div>
+      <span class="section-label">Document 04</span>
+      <div class="section-title">OBSERVED FACTIONS</div>
+    </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="factions">
+    <div class="faction-card believers">
+      <div class="faction-id">Faction ID // LMB-F1 // Active</div>
+      <div class="faction-name">THE BELIEVERS</div>
+      <p class="faction-text">Accept the Covenant's existence and purpose without resistance. They have integrated into Limbo's operational structure and, in many cases, assist with station maintenance and population orientation. They do not require management. They believe they were chosen. <span style="color:var(--teal)">The Covenant has not confirmed or denied this.</span></p>
+      <div class="faction-pop">POPULATION ESTIMATE <span>SIGNIFICANT // STABLE // GROWING</span></div>
+    </div>
+    <div class="faction-card rationalists">
+      <div class="faction-id">Faction ID // LMB-F2 // Active</div>
+      <div class="faction-name">THE RATIONALISTS</div>
+      <p class="faction-text">Reject supernatural or extraterrestrial explanations. They believe Limbo is a government installation — classified, black budget, undisclosed. They spend considerable energy attempting to document and expose its existence. Their documentation efforts are <span style="color:var(--accent)">monitored and, when necessary, redirected.</span> They are not wrong about everything.</p>
+      <div class="faction-pop">POPULATION ESTIMATE <span>MODERATE // STABLE // VOCAL</span></div>
+    </div>
+    <div class="faction-card permanent">
+      <div class="faction-id">Faction ID // LMB-F3 // Elevated Watch</div>
+      <div class="faction-name">THE PERMANENT</div>
+      <p class="faction-text">Those who have been in Limbo long enough that the surface world no longer holds meaning. They remember little of before. They maintain the deepest sections of the station. They do not belong to either faction. <span style="color:#c44">One among them is rising. This development is being assessed.</span></p>
+      <div class="faction-pop">POPULATION ESTIMATE <span>CLASSIFIED // WATCH STATUS: ELEVATED</span></div>
+    </div>
+  </div>
+
+  <div class="depth-rule" style="margin-top:4rem"><span>ANOMALOUS ARTIFACT</span></div>
+
+  <!-- REPORTER'S MAP — ANOMALOUS ARTIFACT -->
+  <div class="artifact-section">
+    <p class="artifact-note">
+      The following document was recovered from <strong>[HUMAN SUBJECT — IDENTITY REDACTED]</strong> during routine surface monitoring operations. Subject is a journalist currently investigating missing persons cases connected to the Wyoming Basin. Subject believes she is tracking a criminal network. She has produced this hand-drawn diagram from evidence gathered during her investigation.<br><br>
+      Subject does not know what she has found. <strong>Subject must not be interfered with at this time.</strong> Her investigation is proceeding in a direction that may prove useful. The Sentinel has flagged this file for Anchor review.
+    </p>
+    <div class="artifact-img-wrap">
+      <img src="images/Limbo_Map_-_Claude_favorite.png" alt="Reporter's recovered diagram" onerror="this.parentElement.style.display='none'">
+      <div class="artifact-scrawl">
+        "Missing persons all connected to this area — some kind of compound? Underground?<br>
+        The sheriff thinks aliens. I think Cromwell.<br>
+        We're both looking at the same place."<br>
+        <span style="font-size:0.85rem;color:var(--muted)">— handwritten note, recovered with diagram</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCESS GATE -->
+  <div class="access-gate">
+    <span class="gate-stamp">⬛ CLEARANCE REQUIRED — LORE ARCHIVE — SETTLED STATUS ONLY ⬛</span>
+    <div class="gate-title">THE LORE ARCHIVE</div>
+    <p class="gate-text">
+      What you have seen is the surface layer. The Covenant's full record — faction histories, node coordinates, the Nitzaken Council's founding documents, and the truth about what Richard found at the end — is held in the Lore Archive.<br><br>
+      Access requires Settled status. Enter your designation below to be notified when the Archive opens.
+    </p>
+    <div class="gate-form" id="gateForm">
+      <input type="email" class="gate-input" id="gateEmail" placeholder="YOUR DESIGNATION (EMAIL)">
+      <button class="gate-btn" onclick="handleGate()">REQUEST ACCESS</button>
+    </div>
+    <div class="gate-success" id="gateSuccess">// ACCESS REQUEST LOGGED — YOU WILL BE NOTIFIED //</div>
+    <div class="gate-disclaimer">BY SUBMITTING YOU ACKNOWLEDGE THAT LIMBO EXISTS AND THAT YOU WILL TELL NO ONE</div>
+  </div>
+
+</div><!-- end dossier -->
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev">‹</button>
+  <div class="lb-img-wrap">
+    <img id="lbImg" src="" alt="">
+  </div>
+  <div class="lb-caption" id="lbCaption"></div>
+  <button class="lb-nav lb-next" id="lbNext">›</button>
+</div>
+
+<footer>
+  <div class="left">THE COVENANT BENEATH</div>
+  <div class="right"><a href="https://www.amazon.com/dp/B0GY87LYWW" target="_blank">Get Book 1 on Amazon</a> &nbsp;·&nbsp; <a href="https://www.thecovenantbeneath.com">thecovenantbeneath.com</a></div>
+</footer>
+
+<script>
+// SURVEILLANCE IMAGES
+const survItems = [
+  { src:"images/Limbo_Corridor.png", faction:"SECTOR 7 — MAIN CORRIDOR", note:"Primary transit route. Bioluminescent channel active. Population movement: normal.", ts:"OBS-LOG-7.001" },
+  { src:"images/Limbo_-_Corridor_1_-_The_belivers_.png", faction:"FACTION ZONE — THE BELIEVERS", note:"Believer congregation point. Structural archways of Covenant origin. Behavioral pattern: cooperative.", ts:"OBS-LOG-7.014" },
+  { src:"images/Limbo_-_Corridor_-_The_Belivers_.png", faction:"FACTION ZONE — UPPER CORRIDOR", note:"Secondary Believer assembly point. Teal formations confirm Covenant mineral activity.", ts:"OBS-LOG-7.015" },
+  { src:"images/Limbo_-_Corridor_-_The_Rationalists.png", faction:"FACTION ZONE — THE RATIONALISTS", note:"Rationalist primary corridor. Documentation activity observed. Materials being catalogued.", ts:"OBS-LOG-7.022" },
+  { src:"images/Limbo_-_Corridor_6_-_The_Permanant_Poulation.png", faction:"DEEP SECTOR — PERMANENT POPULATION", note:"Permanent population zone. Access restricted. One subject of elevated interest has been identified.", ts:"OBS-LOG-7.031 // WATCH" },
+  { src:"images/Limbo_from_above.png", faction:"AERIAL OBSERVATION — SECTOR 7", note:"Full sector view from observation point. Population distributed across three zones. Node activity: baseline.", ts:"OBS-LOG-7.000" },
+  { src:"images/Limbo_-_Corridor_-_undetermned.png", faction:"UNDETERMINED ZONE — UNCLASSIFIED", note:"Location within station unconfirmed. Recovered imagery. Origin: unknown.", ts:"OBS-LOG-7.??? // UNVERIFIED" },
+];
+
+// MAP IMAGES
+const mapItems = [
+  { src:"images/Limbo_Map_-_Claude_favorite.png", label:"NITZAKEN HUB — PRIMARY SCHEMATIC", desc:"Human-transcribed copy of Covenant hub blueprint. Red annotations suggest active use. Primary node location marked." },
+  { src:"images/Limbo_maps_-_4.png", label:"SECTOR OVERVIEW — MULTI-VARIANT", desc:"Four-panel overview of sector variants. Recovered from Rationalist archive. Cross-referenced against Covenant originals — 67% accuracy." },
+];
+
+const survGrid = document.getElementById('survGrid');
+const mapGrid = document.getElementById('mapGrid');
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbCaption = document.getElementById('lbCaption');
+let allImages = [];
+let current = 0;
+
+// BUILD SURVEILLANCE GRID
+survItems.forEach((item, i) => {
+  allImages.push({ src: item.src, caption: item.note });
+  const el = document.createElement('div');
+  el.className = 'surv-item';
+  el.innerHTML = `
+    <div class="surv-frame">
+      <img src="${item.src}" alt="${item.note}" loading="lazy" onerror="this.closest('.surv-item').style.display='none'">
+    </div>
+    <div class="surv-meta">
+      <div class="surv-faction">${item.faction}</div>
+      <div class="surv-note">${item.note}</div>
+      <div class="surv-timestamp">${item.ts}</div>
+    </div>`;
+  el.addEventListener('click', () => openLightbox(i));
+  survGrid.appendChild(el);
+});
+
+// BUILD MAP GRID
+mapItems.forEach((item, i) => {
+  const idx = allImages.length;
+  allImages.push({ src: item.src, caption: item.label });
+  const el = document.createElement('div');
+  el.className = 'map-item';
+  el.innerHTML = `
+    <div class="map-frame">
+      <img src="${item.src}" alt="${item.label}" loading="lazy" onerror="this.closest('.map-item').style.display='none'">
+    </div>
+    <div class="map-meta">
+      <div class="map-label">${item.label}</div>
+      <div class="map-desc">${item.desc}</div>
+    </div>`;
+  el.addEventListener('click', () => openLightbox(idx));
+  mapGrid.appendChild(el);
+});
+
+// LIGHTBOX
+function openLightbox(i) {
+  current = i;
+  lbImg.src = allImages[i].src;
+  lbCaption.textContent = allImages[i].caption;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', () => openLightbox((current - 1 + allImages.length) % allImages.length));
+document.getElementById('lbNext').addEventListener('click', () => openLightbox((current + 1) % allImages.length));
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') openLightbox((current - 1 + allImages.length) % allImages.length);
+  if (e.key === 'ArrowRight') openLightbox((current + 1) % allImages.length);
+});
+
+// EMAIL GATE
+function handleGate() {
+  const email = document.getElementById('gateEmail').value;
+  if (!email || !email.includes('@')) {
+    document.getElementById('gateEmail').style.borderColor = 'rgba(139,26,26,0.6)';
+    return;
+  }
+  document.getElementById('gateForm').style.display = 'none';
+  document.getElementById('gateSuccess').style.display = 'block';
+  // Store email locally for now — connect to Mailchimp/ConvertKit later
+  console.log('Access request:', email);
+}
+document.getElementById('gateEmail').addEventListener('keydown', e => {
+  if (e.key === 'Enter') handleGate();
+});
+</script>
+</body>
+</html>
