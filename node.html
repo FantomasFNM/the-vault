@@ -260,10 +260,11 @@ body::after{
 /* Node dots */
 .node-dot{
   position:absolute;
-  width:10px;height:10px;
+  width:14px;height:14px;
   border-radius:50%;
   transform:translate(-50%,-50%);
   cursor:pointer;
+  z-index:2;
 }
 .node-dot::before{
   content:'';position:absolute;inset:-4px;
@@ -272,19 +273,20 @@ body::after{
 }
 .node-dot.active{background:var(--teal)}
 .node-dot.active::before{border:1px solid rgba(26,138,114,0.5);animation-duration:2s}
-.node-dot.primary{background:var(--gold);width:14px;height:14px}
+.node-dot.primary{background:var(--gold);width:18px;height:18px}
 .node-dot.primary::before{border:1px solid rgba(212,168,71,0.6)}
-.node-dot.breach{background:var(--red)}
+.node-dot.breach{background:var(--red);width:14px;height:14px}
 .node-dot.breach::before{border:1px solid rgba(139,26,26,0.6);animation-duration:0.8s}
 .node-dot.underwater{background:#4488cc}
 .node-dot.underwater::before{border:1px solid rgba(68,136,204,0.5)}
 @keyframes node-pulse{0%,100%{transform:scale(1);opacity:0.6}50%{transform:scale(2.5);opacity:0}}
 .node-label{
   position:absolute;
-  font-size:0.42rem;letter-spacing:0.15em;
+  font-size:0.5rem;letter-spacing:0.12em;
   color:var(--muted);white-space:nowrap;
   transform:translateX(-50%);
-  top:14px;
+  top:16px;
+  z-index:2;
 }
 .node-dot.primary + .node-label{color:var(--gold)}
 .node-dot.breach + .node-label{color:var(--red)}
@@ -506,17 +508,17 @@ body::after{
           <div class="node-dot primary" style="left:52%;top:88%"></div>
           <div class="node-label" style="left:52%;top:88%">ANTARCTICA — ORIGIN NODE</div>
           <!-- Wyoming BREACH -->
-          <div class="node-dot breach" style="left:15%;top:32%"></div>
-          <div class="node-label" style="left:15%;top:32%">WYOMING — BREACH</div>
+          <div class="node-dot breach" style="left:14%;top:28%"></div>
+          <div class="node-label" style="left:14%;top:28%">WYOMING — BREACH</div>
           <!-- Skinwalker Ranch / Uinta Basin -->
-          <div class="node-dot active" style="left:13%;top:40%"></div>
-          <div class="node-label" style="left:13%;top:40%">UINTA BASIN</div>
-          <!-- Southern California underwater -->
-          <div class="node-dot underwater" style="left:9%;top:47%"></div>
-          <div class="node-label" style="left:9%;top:47%">SO. CAL — SUBMERGED</div>
+          <div class="node-dot active" style="left:11%;top:38%"></div>
+          <div class="node-label" style="left:11%;top:38%">UINTA BASIN</div>
           <!-- Sedona -->
-          <div class="node-dot active" style="left:13%;top:48%"></div>
-          <div class="node-label" style="left:13%;top:48%">SEDONA</div>
+          <div class="node-dot active" style="left:12%;top:46%"></div>
+          <div class="node-label" style="left:12%;top:46%">SEDONA</div>
+          <!-- Southern California underwater -->
+          <div class="node-dot underwater" style="left:8%;top:42%"></div>
+          <div class="node-label" style="left:8%;top:42%">SO. CAL — SUBMERGED</div>
           <!-- Bermuda Triangle -->
           <div class="node-dot active" style="left:24%;top:44%"></div>
           <div class="node-label" style="left:24%;top:44%">BERMUDA</div>
