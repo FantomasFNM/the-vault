@@ -489,209 +489,7 @@ body::after{
       <p class="c-text" style="margin-bottom:2rem">The following installations are confirmed active. Locations correspond to areas of sustained anomalous activity in human records — mythology, disappearances, UAP phenomena, geological anomaly. <strong>This is not coincidence.</strong> The Covenant placed installations where the geology supported Node stability. Human mythology grew around what they sensed but could not explain.</p>
 
       <div class="map-container">
-        <svg class="world-map-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-          <!-- Grid lines -->
-          <defs>
-            <pattern id="grid" width="100" height="50" patternUnits="userSpaceOnUse">
-              <path d="M 100 0 L 0 0 0 50" fill="none" stroke="rgba(26,138,114,0.08)" stroke-width="0.5"/>
-            </pattern>
-            <!-- Pulse animation filter -->
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <filter id="glow-gold">
-              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <rect width="1000" height="500" fill="#000"/>
-          <rect width="1000" height="500" fill="url(#grid)"/>
-
-          <!-- CONTINENT OUTLINES — simplified but recognizable -->
-
-          <!-- North America -->
-          <path d="M 120,60 L 145,55 L 170,60 L 190,70 L 200,85 L 195,100 L 180,110 L 175,125 L 185,135 L 190,150 L 200,160 L 205,175 L 195,185 L 180,195 L 165,200 L 150,210 L 140,225 L 130,235 L 120,230 L 110,220 L 100,210 L 95,195 L 90,180 L 85,165 L 80,150 L 75,135 L 72,120 L 75,105 L 80,90 L 90,75 L 105,65 Z"
-            fill="rgba(26,138,114,0.06)" stroke="rgba(26,138,114,0.3)" stroke-width="1"/>
-
-          <!-- Greenland -->
-          <path d="M 200,30 L 220,25 L 240,30 L 245,45 L 235,55 L 215,58 L 200,50 Z"
-            fill="rgba(26,138,114,0.04)" stroke="rgba(26,138,114,0.2)" stroke-width="0.8"/>
-
-          <!-- Central America connector -->
-          <path d="M 140,225 L 148,235 L 152,248 L 155,260 L 150,265"
-            fill="none" stroke="rgba(26,138,114,0.3)" stroke-width="1"/>
-
-          <!-- South America -->
-          <path d="M 150,265 L 165,260 L 180,265 L 190,280 L 195,300 L 192,320 L 185,340 L 175,360 L 165,375 L 155,385 L 145,380 L 138,365 L 132,345 L 128,325 L 125,305 L 128,285 L 135,270 Z"
-            fill="rgba(26,138,114,0.06)" stroke="rgba(26,138,114,0.3)" stroke-width="1"/>
-
-          <!-- Europe -->
-          <path d="M 430,55 L 450,50 L 470,52 L 480,60 L 475,72 L 460,78 L 450,85 L 445,95 L 450,105 L 458,110 L 455,118 L 445,122 L 432,118 L 422,108 L 418,95 L 420,80 L 425,68 Z"
-            fill="rgba(26,138,114,0.06)" stroke="rgba(26,138,114,0.3)" stroke-width="1"/>
-
-          <!-- Scandinavia -->
-          <path d="M 450,30 L 460,25 L 472,28 L 475,40 L 468,50 L 455,52 L 448,45 Z"
-            fill="rgba(26,138,114,0.05)" stroke="rgba(26,138,114,0.2)" stroke-width="0.8"/>
-
-          <!-- Africa -->
-          <path d="M 440,130 L 465,125 L 490,128 L 510,138 L 520,155 L 525,175 L 525,200 L 522,225 L 515,248 L 505,268 L 492,282 L 478,290 L 465,288 L 452,278 L 442,260 L 435,238 L 430,215 L 428,190 L 430,165 L 435,145 Z"
-            fill="rgba(26,138,114,0.06)" stroke="rgba(26,138,114,0.3)" stroke-width="1"/>
-
-          <!-- Madagascar -->
-          <path d="M 528,220 L 535,215 L 540,225 L 538,240 L 530,245 L 524,235 Z"
-            fill="rgba(26,138,114,0.04)" stroke="rgba(26,138,114,0.15)" stroke-width="0.6"/>
-
-          <!-- Middle East / Arabian Peninsula -->
-          <path d="M 510,138 L 540,135 L 560,140 L 565,155 L 555,168 L 540,172 L 525,165 L 515,152 Z"
-            fill="rgba(26,138,114,0.05)" stroke="rgba(26,138,114,0.2)" stroke-width="0.8"/>
-
-          <!-- Asia (main body) -->
-          <path d="M 480,55 L 520,45 L 570,40 L 630,38 L 690,42 L 740,48 L 780,55 L 810,65 L 820,80 L 810,95 L 790,105 L 770,112 L 750,118 L 720,122 L 700,130 L 680,138 L 660,145 L 640,148 L 620,145 L 600,140 L 580,135 L 560,138 L 545,145 L 530,152 L 515,148 L 500,138 L 490,125 L 482,110 L 478,95 L 478,78 Z"
-            fill="rgba(26,138,114,0.06)" stroke="rgba(26,138,114,0.3)" stroke-width="1"/>
-
-          <!-- Indian subcontinent -->
-          <path d="M 600,140 L 620,145 L 630,158 L 628,175 L 618,188 L 605,192 L 594,182 L 590,165 L 594,150 Z"
-            fill="rgba(26,138,114,0.05)" stroke="rgba(26,138,114,0.2)" stroke-width="0.8"/>
-
-          <!-- Southeast Asia -->
-          <path d="M 720,122 L 745,128 L 760,140 L 758,155 L 745,160 L 730,155 L 722,140 Z"
-            fill="rgba(26,138,114,0.05)" stroke="rgba(26,138,114,0.2)" stroke-width="0.8"/>
-
-          <!-- Japan -->
-          <path d="M 810,80 L 820,75 L 828,82 L 825,92 L 815,95 L 808,88 Z"
-            fill="rgba(26,138,114,0.05)" stroke="rgba(26,138,114,0.2)" stroke-width="0.8"/>
-
-          <!-- Korea -->
-          <path d="M 800,90 L 808,87 L 812,95 L 808,102 L 800,100 Z"
-            fill="rgba(26,138,114,0.05)" stroke="rgba(26,138,114,0.2)" stroke-width="0.8"/>
-
-          <!-- Australia -->
-          <path d="M 780,290 L 820,280 L 860,282 L 888,295 L 900,315 L 898,338 L 882,355 L 858,362 L 830,360 L 805,348 L 785,330 L 775,310 Z"
-            fill="rgba(26,138,114,0.06)" stroke="rgba(26,138,114,0.3)" stroke-width="1"/>
-
-          <!-- New Zealand -->
-          <path d="M 920,340 L 928,335 L 935,342 L 932,352 L 922,355 Z"
-            fill="rgba(26,138,114,0.04)" stroke="rgba(26,138,114,0.15)" stroke-width="0.6"/>
-
-          <!-- Antarctica -->
-          <path d="M 200,465 L 300,458 L 400,455 L 500,453 L 600,455 L 700,458 L 800,465 L 850,475 L 800,485 L 700,490 L 600,492 L 500,493 L 400,492 L 300,490 L 200,485 L 150,475 Z"
-            fill="rgba(26,138,114,0.08)" stroke="rgba(26,138,114,0.35)" stroke-width="1"/>
-
-          <!-- UK/Ireland -->
-          <path d="M 428,68 L 435,65 L 440,72 L 437,80 L 430,82 L 425,75 Z"
-            fill="rgba(26,138,114,0.05)" stroke="rgba(26,138,114,0.2)" stroke-width="0.7"/>
-
-          <!-- ===================== -->
-          <!-- NODE DOTS & LABELS   -->
-          <!-- ===================== -->
-
-          <!-- Wyoming — BREACH -->
-          <circle cx="122" cy="118" r="6" fill="#8b1a1a" filter="url(#glow)">
-            <animate attributeName="r" values="6;10;6" dur="1s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.5;1" dur="1s" repeatCount="indefinite"/>
-          </circle>
-          <text x="122" y="135" text-anchor="middle" font-family="Share Tech Mono" font-size="7" fill="#cc3333" letter-spacing="1">WYOMING</text>
-          <text x="122" y="144" text-anchor="middle" font-family="Share Tech Mono" font-size="6" fill="#993333" letter-spacing="1">BREACH</text>
-
-          <!-- Uinta Basin / Skinwalker -->
-          <circle cx="108" cy="138" r="5" fill="#1a8a72" filter="url(#glow)">
-            <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
-          </circle>
-          <text x="108" y="153" text-anchor="middle" font-family="Share Tech Mono" font-size="6.5" fill="#1a8a72" letter-spacing="1">UINTA BASIN</text>
-
-          <!-- So. Cal Underwater -->
-          <circle cx="90" cy="148" r="5" fill="#4488cc" filter="url(#glow)">
-            <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.4;1" dur="2.5s" repeatCount="indefinite"/>
-          </circle>
-          <text x="90" y="163" text-anchor="middle" font-family="Share Tech Mono" font-size="6" fill="#4488cc" letter-spacing="0.5">SO.CAL — SUBMERGED</text>
-
-          <!-- Sedona -->
-          <circle cx="110" cy="158" r="5" fill="#1a8a72" filter="url(#glow)">
-            <animate attributeName="r" values="5;8;5" dur="2.2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.4;1" dur="2.2s" repeatCount="indefinite"/>
-          </circle>
-          <text x="110" y="172" text-anchor="middle" font-family="Share Tech Mono" font-size="6.5" fill="#1a8a72" letter-spacing="1">SEDONA</text>
-
-          <!-- Bermuda -->
-          <circle cx="195" cy="155" r="5" fill="#1a8a72" filter="url(#glow)">
-            <animate attributeName="r" values="5;8;5" dur="2.8s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.4;1" dur="2.8s" repeatCount="indefinite"/>
-          </circle>
-          <text x="195" y="170" text-anchor="middle" font-family="Share Tech Mono" font-size="6.5" fill="#1a8a72" letter-spacing="1">BERMUDA</text>
-
-          <!-- Nazca -->
-          <circle cx="168" cy="310" r="5" fill="#1a8a72" filter="url(#glow)">
-            <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.4;1" dur="3s" repeatCount="indefinite"/>
-          </circle>
-          <text x="168" y="325" text-anchor="middle" font-family="Share Tech Mono" font-size="6.5" fill="#1a8a72" letter-spacing="1">NAZCA</text>
-
-          <!-- Stonehenge -->
-          <circle cx="438" cy="82" r="5" fill="#1a8a72" filter="url(#glow)">
-            <animate attributeName="r" values="5;8;5" dur="2.3s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.4;1" dur="2.3s" repeatCount="indefinite"/>
-          </circle>
-          <text x="438" y="97" text-anchor="middle" font-family="Share Tech Mono" font-size="6.5" fill="#1a8a72" letter-spacing="1">STONEHENGE</text>
-
-          <!-- Giza -->
-          <circle cx="510" cy="165" r="5" fill="#1a8a72" filter="url(#glow)">
-            <animate attributeName="r" values="5;8;5" dur="2.6s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.4;1" dur="2.6s" repeatCount="indefinite"/>
-          </circle>
-          <text x="510" y="180" text-anchor="middle" font-family="Share Tech Mono" font-size="6.5" fill="#1a8a72" letter-spacing="1">GIZA</text>
-
-          <!-- Gulf of Aden -->
-          <circle cx="575" cy="188" r="5" fill="#4488cc" filter="url(#glow)">
-            <animate attributeName="r" values="5;8;5" dur="2.4s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.4;1" dur="2.4s" repeatCount="indefinite"/>
-          </circle>
-          <text x="575" y="203" text-anchor="middle" font-family="Share Tech Mono" font-size="6.5" fill="#4488cc" letter-spacing="1">GULF OF ADEN</text>
-
-          <!-- Lake Baikal -->
-          <circle cx="698" cy="88" r="5" fill="#1a8a72" filter="url(#glow)">
-            <animate attributeName="r" values="5;8;5" dur="3.2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.4;1" dur="3.2s" repeatCount="indefinite"/>
-          </circle>
-          <text x="698" y="103" text-anchor="middle" font-family="Share Tech Mono" font-size="6.5" fill="#1a8a72" letter-spacing="1">LAKE BAIKAL</text>
-
-          <!-- Gyeongju -->
-          <circle cx="800" cy="105" r="5" fill="#1a8a72" filter="url(#glow)">
-            <animate attributeName="r" values="5;8;5" dur="2.7s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.4;1" dur="2.7s" repeatCount="indefinite"/>
-          </circle>
-          <text x="800" y="120" text-anchor="middle" font-family="Share Tech Mono" font-size="6.5" fill="#1a8a72" letter-spacing="1">GYEONGJU</text>
-
-          <!-- Mariana Trench -->
-          <circle cx="852" cy="195" r="5" fill="#4488cc" filter="url(#glow)">
-            <animate attributeName="r" values="5;8;5" dur="2.9s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.4;1" dur="2.9s" repeatCount="indefinite"/>
-          </circle>
-          <text x="852" y="210" text-anchor="middle" font-family="Share Tech Mono" font-size="6.5" fill="#4488cc" letter-spacing="1">MARIANA</text>
-
-          <!-- Antarctica PRIMARY NODE -->
-          <circle cx="500" cy="462" r="9" fill="#d4a847" filter="url(#glow-gold)">
-            <animate attributeName="r" values="9;14;9" dur="3s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.6;1" dur="3s" repeatCount="indefinite"/>
-          </circle>
-          <text x="500" y="478" text-anchor="middle" font-family="Share Tech Mono" font-size="7" fill="#d4a847" letter-spacing="1.5">ANTARCTICA — ORIGIN NODE</text>
-
-          <!-- Connection lines between nodes (subtle) -->
-          <g opacity="0.08" stroke="#1a8a72" stroke-width="0.5">
-            <line x1="122" y1="118" x2="500" y2="462"/>
-            <line x1="108" y1="138" x2="500" y2="462"/>
-            <line x1="195" y1="155" x2="500" y2="462"/>
-            <line x1="438" y1="82" x2="500" y2="462"/>
-            <line x1="510" y1="165" x2="500" y2="462"/>
-            <line x1="698" y1="88" x2="500" y2="462"/>
-            <line x1="800" y1="105" x2="500" y2="462"/>
-            <line x1="168" y1="310" x2="500" y2="462"/>
-            <line x1="852" y1="195" x2="500" y2="462"/>
-          </g>
-        </svg>
-
+        <div id="worldMapD3"></div>
         <div class="map-legend">
           <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>PRIMARY / ORIGIN NODE</div>
           <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div>ACTIVE — STABLE</div>
@@ -700,6 +498,146 @@ body::after{
         </div>
       </div>
 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+      <script>
+      // Build D3 world map
+      (function() {
+        const width = document.getElementById('worldMapD3').offsetWidth || 900;
+        const height = width * 0.52;
+
+        const svg = d3.select('#worldMapD3')
+          .append('svg')
+          .attr('width', '100%')
+          .attr('height', height)
+          .attr('viewBox', `0 0 ${width} ${height}`)
+          .style('background', '#000')
+          .style('border', '1px solid rgba(26,138,114,0.1)');
+
+        // Grid
+        const defs = svg.append('defs');
+        const grid = defs.append('pattern').attr('id','mapgrid').attr('width',50).attr('height',50).attr('patternUnits','userSpaceOnUse');
+        grid.append('path').attr('d','M 50 0 L 0 0 0 50').attr('fill','none').attr('stroke','rgba(26,138,114,0.06)').attr('stroke-width','0.5');
+        svg.append('rect').attr('width',width).attr('height',height).attr('fill','url(#mapgrid)');
+
+        // Glow filters
+        const glow = defs.append('filter').attr('id','mglow');
+        glow.append('feGaussianBlur').attr('stdDeviation','3').attr('result','coloredBlur');
+        const merge = glow.append('feMerge');
+        merge.append('feMergeNode').attr('in','coloredBlur');
+        merge.append('feMergeNode').attr('in','SourceGraphic');
+
+        const glowGold = defs.append('filter').attr('id','mglowgold');
+        glowGold.append('feGaussianBlur').attr('stdDeviation','4').attr('result','coloredBlur');
+        const mergeG = glowGold.append('feMerge');
+        mergeG.append('feMergeNode').attr('in','coloredBlur');
+        mergeG.append('feMergeNode').attr('in','SourceGraphic');
+
+        const projection = d3.geoNaturalEarth1()
+          .scale(width / 6.3)
+          .translate([width / 2, height / 2]);
+
+        const path = d3.geoPath().projection(projection);
+
+        // Nodes data [name, lon, lat, type, label]
+        const nodes = [
+          ['WYOMING — BREACH',     -107.5,  43.0, 'breach'],
+          ['UINTA BASIN',          -109.5,  40.0, 'active'],
+          ['SO. CAL — SUBMERGED',  -120.0,  33.5, 'underwater'],
+          ['SEDONA',               -111.8,  34.8, 'active'],
+          ['BERMUDA',               -64.8,  32.3, 'active'],
+          ['NAZCA',                 -75.0, -14.7, 'active'],
+          ['STONEHENGE',            -1.83,  51.2, 'active'],
+          ['GIZA',                  31.13,  29.9, 'active'],
+          ['GULF OF ADEN',          45.0,   11.5, 'underwater'],
+          ['LAKE BAIKAL',          107.7,   53.5, 'active'],
+          ['GYEONGJU',             129.2,   35.8, 'active'],
+          ['MARIANA',              142.2,   11.3, 'underwater'],
+          ['ANTARCTICA — ORIGIN',    0.0,  -85.0, 'primary'],
+        ];
+
+        const nodeColors = { active:'#1a8a72', breach:'#8b1a1a', underwater:'#4488cc', primary:'#d4a847' };
+        const nodeRadius = { active:5, breach:6, underwater:5, primary:9 };
+
+        // Load world topology
+        d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(function(world) {
+          const countries = topojson.feature(world, world.objects.countries);
+
+          svg.append('g')
+            .selectAll('path')
+            .data(countries.features)
+            .enter().append('path')
+            .attr('d', path)
+            .attr('fill', 'rgba(26,138,114,0.07)')
+            .attr('stroke', 'rgba(26,138,114,0.28)')
+            .attr('stroke-width', '0.6');
+
+          // Graticule
+          const graticule = d3.geoGraticule().step([30,30]);
+          svg.append('path').datum(graticule()).attr('d',path).attr('fill','none').attr('stroke','rgba(26,138,114,0.04)').attr('stroke-width','0.4');
+
+          // Connection lines to Antarctica
+          const antPos = projection([0, -85]);
+          nodes.filter(n => n[3] !== 'primary').forEach(n => {
+            const pos = projection([n[1], n[2]]);
+            if (!pos || !antPos) return;
+            svg.append('line')
+              .attr('x1', pos[0]).attr('y1', pos[1])
+              .attr('x2', antPos[0]).attr('y2', antPos[1])
+              .attr('stroke', 'rgba(26,138,114,0.06)')
+              .attr('stroke-width', '0.6');
+          });
+
+          // Node dots and labels
+          nodes.forEach(function(n) {
+            const pos = projection([n[1], n[2]]);
+            if (!pos) return;
+            const color = nodeColors[n[3]];
+            const r = nodeRadius[n[3]];
+            const filter = n[3] === 'primary' ? 'url(#mglowgold)' : 'url(#mglow)';
+            const dur = n[3] === 'breach' ? '0.9s' : n[3] === 'primary' ? '2.5s' : '2s';
+
+            const g = svg.append('g');
+
+            // Pulse ring
+            g.append('circle')
+              .attr('cx', pos[0]).attr('cy', pos[1])
+              .attr('r', r + 3)
+              .attr('fill', 'none')
+              .attr('stroke', color)
+              .attr('stroke-width', '0.8')
+              .attr('opacity', '0.5')
+              .append('animate')
+              .attr('attributeName', 'r')
+              .attr('values', `${r+2};${r+10};${r+2}`)
+              .attr('dur', dur)
+              .attr('repeatCount', 'indefinite');
+
+            // Dot
+            g.append('circle')
+              .attr('cx', pos[0]).attr('cy', pos[1])
+              .attr('r', r)
+              .attr('fill', color)
+              .attr('filter', filter);
+
+            // Label
+            g.append('text')
+              .attr('x', pos[0])
+              .attr('y', pos[1] + r + 11)
+              .attr('text-anchor', 'middle')
+              .attr('font-family', 'Share Tech Mono, monospace')
+              .attr('font-size', n[3] === 'primary' ? '7.5' : '6.5')
+              .attr('fill', color)
+              .attr('letter-spacing', '1')
+              .text(n[0]);
+          });
+
+        }).catch(function(err) {
+          // Fallback text if CDN fails
+          svg.append('text').attr('x', width/2).attr('y', height/2).attr('text-anchor','middle').attr('fill','#1a8a72').attr('font-family','Share Tech Mono').attr('font-size','14').text('NODE NETWORK MAP — LOADING...');
+        });
+      })();
+      </script>
       <table class="node-table">
         <tr>
           <th>LOCATION</th><th>DESIGNATION</th><th>STATUS</th><th>NOTES</th>
