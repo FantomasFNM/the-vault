@@ -74,6 +74,17 @@ nav a.active{color:var(--teal)}
 .data-field{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted)}
 .data-field span{color:var(--accent);margin-left:0.5rem}
 
+/* HIDDEN DOOR */
+.surv-item.has-secret{position:relative}
+.secret-door{
+  position:absolute;
+  bottom:2.5rem;left:0;
+  width:22%;height:30%;
+  z-index:10;cursor:pointer;
+  opacity:0;
+}
+.secret-door:hover{opacity:0.01}
+
 /* SURVEILLANCE GRID */
 .surv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2rem}
 .surv-item{cursor:pointer;position:relative}
@@ -140,6 +151,79 @@ nav a.active{color:var(--teal)}
 .gate-btn:hover{background:var(--teal);color:#000}
 .gate-disclaimer{font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.15em;color:var(--muted);margin-top:1.2rem;opacity:0.6}
 .gate-success{display:none;font-family:var(--font-mono);font-size:0.8rem;color:var(--teal);letter-spacing:0.2em;margin-top:1rem}
+
+/* SECRET DOOR MODAL */
+.secret-modal{
+  display:none;position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,0.97);
+  align-items:center;justify-content:center;
+  flex-direction:column;padding:2rem;
+  backdrop-filter:blur(8px);
+}
+.secret-modal.active{display:flex}
+.secret-modal-img{
+  max-width:700px;width:100%;height:auto;
+  display:block;margin:0 auto 2rem;
+  border:1px solid rgba(212,168,71,0.2);
+  box-shadow:0 0 60px rgba(212,168,71,0.1);
+}
+.secret-modal-stamp{
+  font-family:var(--font-mono);font-size:0.6rem;
+  letter-spacing:0.4em;color:var(--red);
+  margin-bottom:1.5rem;text-align:center;
+  animation:flicker 6s linear infinite;
+}
+.secret-modal-title{
+  font-family:var(--font-title);
+  font-size:clamp(2rem,5vw,3.5rem);
+  letter-spacing:0.1em;color:var(--text);
+  text-align:center;margin-bottom:1rem;
+}
+.secret-modal-text{
+  font-family:var(--font-mono);font-size:0.8rem;
+  line-height:2;color:#9ab5ae;
+  max-width:500px;margin:0 auto 2rem;
+  text-align:center;
+}
+.secret-modal-text strong{color:rgba(212,168,71,0.9);font-weight:normal}
+.secret-gate-form{
+  display:flex;gap:0.8rem;max-width:440px;
+  margin:0 auto;flex-wrap:wrap;justify-content:center;
+}
+.secret-gate-input{
+  flex:1;min-width:220px;
+  background:rgba(0,0,0,0.8);
+  border:1px solid rgba(212,168,71,0.3);
+  color:var(--text);font-family:var(--font-mono);
+  font-size:0.8rem;padding:0.8rem 1rem;
+  letter-spacing:0.1em;outline:none;
+  transition:border-color 0.3s;
+}
+.secret-gate-input::placeholder{color:var(--muted);opacity:0.6}
+.secret-gate-input:focus{border-color:rgba(212,168,71,0.6)}
+.secret-gate-btn{
+  background:transparent;
+  border:1px solid rgba(212,168,71,0.6);
+  color:rgba(212,168,71,0.9);
+  font-family:var(--font-mono);font-size:0.7rem;
+  letter-spacing:0.3em;text-transform:uppercase;
+  padding:0.8rem 1.5rem;cursor:pointer;
+  transition:all 0.3s;white-space:nowrap;
+}
+.secret-gate-btn:hover{background:rgba(212,168,71,0.15)}
+.secret-disclaimer{
+  font-family:var(--font-mono);font-size:0.52rem;
+  letter-spacing:0.15em;color:var(--muted);
+  margin-top:1rem;opacity:0.5;text-align:center;
+}
+.secret-skip{
+  font-family:var(--font-mono);font-size:0.55rem;
+  letter-spacing:0.2em;color:var(--muted);
+  margin-top:1.5rem;cursor:pointer;
+  text-decoration:underline;opacity:0.4;
+  transition:opacity 0.2s;background:none;border:none;
+}
+.secret-skip:hover{opacity:0.8}
 
 /* LIGHTBOX */
 .lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,5,0.96);align-items:center;justify-content:center;flex-direction:column;padding:2rem;backdrop-filter:blur(4px)}
@@ -349,6 +433,26 @@ footer a{color:var(--accent);text-decoration:none}
 
 </div><!-- end dossier -->
 
+<!-- SECRET DOOR MODAL -->
+<div class="secret-modal" id="secretModal">
+  <div class="secret-modal-stamp">⬛ UNAUTHORIZED ACCESS DETECTED — SENTINEL NOTIFIED ⬛</div>
+  <img class="secret-modal-img" src="images/Limbo_-_The_Secret_Door.png" alt="The Secret Door">
+  <div class="secret-modal-title">YOU FOUND SOMETHING.</div>
+  <p class="secret-modal-text">
+    So did they.<br><br>
+    What's behind this door is classified beyond Settled status.<br>
+    <strong>The Node has been waiting.</strong><br><br>
+    Enter your designation to request access.<br>
+    Your access will be logged by the Sentinel.
+  </p>
+  <div class="secret-gate-form" id="secretGateForm">
+    <input type="email" class="secret-gate-input" id="secretEmail" placeholder="YOUR DESIGNATION (EMAIL)">
+    <button class="secret-gate-btn" onclick="handleSecretGate()">ACCESS THE NODE</button>
+  </div>
+  <div class="secret-disclaimer">BY ENTERING YOU ACKNOWLEDGE WHAT YOU ARE ABOUT TO SEE IS NOT FOR EVERYONE</div>
+  <button class="secret-skip" onclick="goToNode()">skip — take me there anyway</button>
+</div>
+
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="lb-close" id="lbClose">✕</button>
@@ -372,7 +476,8 @@ const survItems = [
   { src:"images/Limbo_-_Corridor_1_-_The_belivers_.png", faction:"FACTION ZONE — THE BELIEVERS", note:"Believer congregation point. Structural archways of Covenant origin. Behavioral pattern: cooperative.", ts:"OBS-LOG-7.014" },
   { src:"images/Limbo_-_Corridor_-_The_Belivers_.png", faction:"FACTION ZONE — UPPER CORRIDOR", note:"Secondary Believer assembly point. Teal formations confirm Covenant mineral activity.", ts:"OBS-LOG-7.015" },
   { src:"images/Limbo_-_Corridor_-_The_Rationalists.png", faction:"FACTION ZONE — THE RATIONALISTS", note:"Rationalist primary corridor. Documentation activity observed. Materials being catalogued.", ts:"OBS-LOG-7.022" },
-  { src:"images/Limbo_-_Corridor_6_-_The_Permanant_Poulation.png", faction:"DEEP SECTOR — PERMANENT POPULATION", note:"Permanent population zone. Access restricted. One subject of elevated interest has been identified.", ts:"OBS-LOG-7.031 // WATCH" },
+  { src:"images/Limbo_-_Corridor_6_-_The_Permanant_Poulation.png", faction:"DEEP SECTOR — PERMANENT POPULATION", note:"Permanent population zone. Access restricted. One subject of elevated interest has been identified.", ts:"OBS-LOG-7.031 // WATCH", secret:true },
+  { src:"images/Limbo_-_The_Community.png", faction:"COMMUNITY ZONE — GENERAL POPULATION", note:"Central gathering area. Multi-faction presence observed. Behavioral pattern: routine.", ts:"OBS-LOG-7.008" },
   { src:"images/Limbo_from_above.png", faction:"AERIAL OBSERVATION — SECTOR 7", note:"Full sector view from observation point. Population distributed across three zones. Node activity: baseline.", ts:"OBS-LOG-7.000" },
   { src:"images/Limbo_-_Corridor_-_undetermned.png", faction:"UNDETERMINED ZONE — UNCLASSIFIED", note:"Location within station unconfirmed. Recovered imagery. Origin: unknown.", ts:"OBS-LOG-7.??? // UNVERIFIED" },
 ];
@@ -395,17 +500,21 @@ let current = 0;
 survItems.forEach((item, i) => {
   allImages.push({ src: item.src, caption: item.note });
   const el = document.createElement('div');
-  el.className = 'surv-item';
+  el.className = 'surv-item' + (item.secret ? ' has-secret' : '');
   el.innerHTML = `
     <div class="surv-frame">
       <img src="${item.src}" alt="${item.note}" loading="lazy" onerror="this.closest('.surv-item').style.display='none'">
+      ${item.secret ? `<div class="secret-door" onclick="event.stopPropagation();openSecretModal()"></div>` : ''}
     </div>
     <div class="surv-meta">
       <div class="surv-faction">${item.faction}</div>
       <div class="surv-note">${item.note}</div>
       <div class="surv-timestamp">${item.ts}</div>
     </div>`;
-  el.addEventListener('click', () => openLightbox(i));
+  el.addEventListener('click', (e) => {
+    if (e.target.classList.contains('secret-door')) return;
+    openLightbox(i);
+  });
   survGrid.appendChild(el);
 });
 
@@ -449,6 +558,27 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') openLightbox((current - 1 + allImages.length) % allImages.length);
   if (e.key === 'ArrowRight') openLightbox((current + 1) % allImages.length);
 });
+
+// SECRET DOOR
+function openSecretModal() {
+  document.getElementById('secretModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function goToNode() {
+  window.location.href = 'node.html';
+}
+function handleSecretGate() {
+  const email = document.getElementById('secretEmail').value;
+  if (!email || !email.includes('@')) {
+    document.getElementById('secretEmail').style.borderColor = 'rgba(139,26,26,0.6)';
+    return;
+  }
+  // Log email
+  console.log('Node access request:', email);
+  // Brief delay then redirect
+  document.getElementById('secretGateForm').innerHTML = '<div style="font-family:var(--font-mono);font-size:0.8rem;color:#d4a847;letter-spacing:0.2em;text-align:center">// ACCESS GRANTED — REDIRECTING TO NODE //<br><br>The Sentinel has been notified.</div>';
+  setTimeout(() => { goToNode(); }, 2500);
+}
 
 // EMAIL GATE
 function handleGate() {
