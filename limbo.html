@@ -100,6 +100,8 @@ nav a.active{color:var(--teal)}
 .surv-note{font-family:var(--font-caption);font-size:1.15rem;color:var(--muted);line-height:1.35;transition:color 0.3s}
 .surv-item:hover .surv-note{color:var(--text)}
 .surv-timestamp{font-family:var(--font-mono);font-size:0.52rem;color:rgba(122,118,112,0.4);margin-top:0.35rem;letter-spacing:0.1em}
+.surv-access-hint{font-family:var(--font-mono);font-size:0.48rem;color:rgba(139,26,26,0.35);margin-top:0.4rem;letter-spacing:0.18em;cursor:pointer;transition:color 0.4s}
+.surv-item:hover .surv-access-hint{color:rgba(139,26,26,0.6)}
 
 /* AERIAL HUB FEATURE */
 .aerial-feature{margin:1.5rem 0 0;cursor:pointer}
@@ -514,6 +516,7 @@ survItems.forEach((item, i) => {
       <div class="surv-faction">${item.faction}</div>
       <div class="surv-note">${item.note}</div>
       <div class="surv-timestamp">${item.ts}</div>
+      ${item.secret ? `<div class="surv-access-hint">// ACCESS POINT DETECTED — COORDINATES REDACTED</div>` : ''}
     </div>`;
   el.addEventListener('click', (e) => {
     if (e.target.classList.contains('secret-door')) return;
