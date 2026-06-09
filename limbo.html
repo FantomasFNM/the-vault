@@ -29,7 +29,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 /* HEADER */
 header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,9,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;height:62px;display:flex;align-items:center;justify-content:space-between}
 .site-title{font-family:var(--font-title);font-size:1.35rem;letter-spacing:0.14em;color:var(--text);text-decoration:none}
-nav a{font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-left:2.2rem;transition:color 0.25s}
+nav a{font-size:0.78rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-left:2.2rem;transition:color 0.25s}
 nav a:hover{color:var(--accent)}
 nav a.active{color:var(--teal)}
 
@@ -37,19 +37,18 @@ nav a.active{color:var(--teal)}
 .classified-hero{position:relative;margin-top:62px;padding:0;overflow:hidden;min-height:520px;display:flex;align-items:center;justify-content:center;background:#000}
 .hero-bg{position:absolute;inset:0;background:
   radial-gradient(ellipse at 50% 100%, rgba(26,138,114,0.14) 0%, transparent 65%),
-  radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.5) 0%, transparent 100%);
-  z-index:1}
+  radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.5) 0%, transparent 100%);z-index:1}
 .hero-scanlines{position:absolute;inset:0;z-index:2;pointer-events:none;
   background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.07) 2px,rgba(0,0,0,0.07) 4px)}
 .hero-content{position:relative;z-index:3;text-align:center;padding:5rem 2rem 4rem}
 .covenant-seal{width:72px;height:72px;margin:0 auto 1.8rem;opacity:0.55;animation:pulse-seal 4s ease-in-out infinite}
 @keyframes pulse-seal{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:0.75;transform:scale(1.03)}}
 .covenant-seal svg{width:100%;height:100%}
-.classification-stamp{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.45em;color:var(--red);text-transform:uppercase;margin-bottom:1.5rem;opacity:0.85;animation:flicker 8s linear infinite}
+.classification-stamp{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.45em;color:var(--red);text-transform:uppercase;margin-bottom:1.5rem;opacity:0.85;animation:flicker 8s linear infinite}
 @keyframes flicker{0%,95%,100%{opacity:0.85}96%{opacity:0.35}97%{opacity:0.85}98%{opacity:0.25}99%{opacity:0.85}}
 .hero-title{font-family:var(--font-title);font-size:clamp(6rem,18vw,15rem);letter-spacing:0.06em;color:var(--text);line-height:0.85;margin-bottom:1.2rem;text-shadow:0 0 100px rgba(26,138,114,0.25)}
-.hero-subtitle{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.38em;color:var(--teal);text-transform:uppercase;margin-bottom:2.2rem;opacity:0.9}
-.hero-redacted{font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.2em;color:var(--muted);line-height:2.2;opacity:0.7}
+.hero-subtitle{font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.38em;color:var(--teal);text-transform:uppercase;margin-bottom:2.2rem;opacity:0.9}
+.hero-redacted{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.2em;color:var(--muted);line-height:2.2;opacity:0.7}
 .redact{display:inline-block;background:var(--muted);color:transparent;user-select:none;padding:0 4px;border-radius:1px;opacity:0.8}
 .hero-rule{width:100px;height:1px;background:linear-gradient(to right,transparent,var(--teal),transparent);margin:2rem auto}
 
@@ -59,28 +58,28 @@ nav a.active{color:var(--teal)}
 /* SECTION HEADERS */
 .section-header{display:flex;align-items:center;gap:1.5rem;margin:6rem 0 2.5rem}
 .section-header::before{content:'';width:3px;height:36px;background:linear-gradient(to bottom,transparent,var(--teal),transparent);flex-shrink:0}
-.section-label{font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.4em;color:var(--red);text-transform:uppercase;display:block;margin-bottom:0.35rem;opacity:0.9}
-.section-title{font-family:var(--font-title);font-size:2.4rem;letter-spacing:0.1em;color:var(--text)}
+.section-label{font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.4em;color:var(--red);text-transform:uppercase;display:block;margin-bottom:0.35rem;opacity:0.9}
+.section-title{font-family:var(--font-title);font-size:2.6rem;letter-spacing:0.1em;color:var(--text)}
 .section-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(200,169,110,0.15),transparent)}
 
 /* FIELD SUMMARY */
 .field-summary{border:1px solid rgba(26,138,114,0.18);padding:2.8rem;position:relative;background:rgba(26,138,114,0.025);margin-bottom:0}
-.field-summary::before{content:'COVENANT FIELD DOCUMENTATION — SECTOR 7 — LIMBO';position:absolute;top:-0.55rem;left:1.5rem;font-family:var(--font-mono);font-size:0.52rem;letter-spacing:0.28em;color:var(--teal);background:#000;padding:0 0.6rem;opacity:0.9}
+.field-summary::before{content:'COVENANT FIELD DOCUMENTATION — SECTOR 7 — LIMBO';position:absolute;top:-0.55rem;left:1.5rem;font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.28em;color:var(--teal);background:#000;padding:0 0.6rem;opacity:0.9}
 .field-summary::after{content:'';position:absolute;bottom:0;right:0;width:36px;height:36px;border-right:1px solid rgba(26,138,114,0.35);border-bottom:1px solid rgba(26,138,114,0.35)}
-.covenant-text{font-family:var(--font-mono);font-size:0.8rem;line-height:2.1;color:#8eada6;margin-bottom:1.6rem}
+.covenant-text{font-family:var(--font-mono);font-size:0.88rem;line-height:2.1;color:#8eada6;margin-bottom:1.6rem}
 .covenant-text:last-child{margin-bottom:0}
 .covenant-text strong{color:var(--teal);font-weight:normal}
 .data-row{display:flex;gap:2.5rem;margin-bottom:0.9rem;flex-wrap:wrap;padding-bottom:0.9rem;border-bottom:1px solid rgba(26,138,114,0.08)}
 .data-row:last-of-type{border-bottom:none;margin-bottom:2rem}
-.data-field{font-family:var(--font-mono);font-size:0.68rem;color:var(--muted);letter-spacing:0.05em}
+.data-field{font-family:var(--font-mono);font-size:0.75rem;color:var(--muted);letter-spacing:0.05em}
 .data-field span{color:var(--accent);margin-left:0.5rem}
 
-/* HIDDEN DOOR */
+/* HIDDEN DOOR — positioned over where Richard's panel would be */
 .surv-item.has-secret{position:relative}
 .secret-door{
   position:absolute;
-  bottom:2.5rem;left:0;
-  width:22%;height:30%;
+  top:25%;left:8%;
+  width:18%;height:28%;
   z-index:10;cursor:pointer;
   opacity:0;
 }
@@ -91,16 +90,27 @@ nav a.active{color:var(--teal)}
 .surv-item{cursor:pointer;position:relative}
 .surv-frame{position:relative;overflow:hidden;background:#080808;border:1px solid rgba(200,169,110,0.1);aspect-ratio:4/3}
 .surv-frame::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(135deg,rgba(26,138,114,0.04) 0%,transparent 55%);transition:opacity 0.4s}
-.surv-frame::after{content:'REC ●';position:absolute;top:0.5rem;right:0.6rem;font-family:var(--font-mono);font-size:0.48rem;letter-spacing:0.15em;color:var(--red);z-index:3;opacity:0.65;animation:blink 2.5s step-end infinite}
+.surv-frame::after{content:'REC ●';position:absolute;top:0.5rem;right:0.6rem;font-family:var(--font-mono);font-size:0.52rem;letter-spacing:0.15em;color:var(--red);z-index:3;opacity:0.65;animation:blink 2.5s step-end infinite}
 @keyframes blink{0%,100%{opacity:0.65}50%{opacity:0}}
 .surv-item:hover .surv-frame{border-color:rgba(26,138,114,0.35)}
 .surv-item:hover .surv-frame img{transform:scale(1.04);filter:brightness(0.95) saturate(1.1)}
 .surv-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.4s;filter:brightness(0.75) saturate(0.8)}
-.surv-meta{padding:0.65rem 0.5rem 0.4rem;background:#000;border-left:1px solid rgba(200,169,110,0.08);border-right:1px solid rgba(200,169,110,0.08);border-bottom:1px solid rgba(200,169,110,0.08)}
-.surv-faction{font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.32em;color:var(--teal);text-transform:uppercase;margin-bottom:0.25rem;opacity:0.85}
-.surv-note{font-family:var(--font-caption);font-size:1rem;color:var(--muted);line-height:1.35;transition:color 0.3s}
+.surv-meta{padding:0.75rem 0.6rem 0.5rem;background:#000;border-left:1px solid rgba(200,169,110,0.08);border-right:1px solid rgba(200,169,110,0.08);border-bottom:1px solid rgba(200,169,110,0.08)}
+.surv-faction{font-family:var(--font-mono);font-size:0.56rem;letter-spacing:0.32em;color:var(--teal);text-transform:uppercase;margin-bottom:0.3rem;opacity:0.85}
+.surv-note{font-family:var(--font-caption);font-size:1.15rem;color:var(--muted);line-height:1.35;transition:color 0.3s}
 .surv-item:hover .surv-note{color:var(--text)}
-.surv-timestamp{font-family:var(--font-mono);font-size:0.47rem;color:rgba(122,118,112,0.4);margin-top:0.3rem;letter-spacing:0.1em}
+.surv-timestamp{font-family:var(--font-mono);font-size:0.52rem;color:rgba(122,118,112,0.4);margin-top:0.35rem;letter-spacing:0.1em}
+
+/* AERIAL HUB FEATURE */
+.aerial-feature{margin:1.5rem 0 0;cursor:pointer}
+.aerial-frame{position:relative;overflow:hidden;border:1px solid rgba(26,138,114,0.2);max-height:540px}
+.aerial-frame img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.65) saturate(0.9);transition:filter 0.6s}
+.aerial-feature:hover .aerial-frame img{filter:brightness(0.82) saturate(1.05)}
+.aerial-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.15) 55%,transparent 100%)}
+.aerial-stamp{font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.32em;color:var(--teal);margin-bottom:0.9rem;opacity:0.85}
+.aerial-label{font-family:var(--font-title);font-size:clamp(3rem,7vw,6rem);letter-spacing:0.1em;color:var(--text);line-height:1;margin-bottom:0.9rem;text-shadow:0 0 40px rgba(26,138,114,0.3)}
+.aerial-sub{font-family:var(--font-mono);font-size:0.75rem;line-height:2;color:#8eada6}
+.aerial-sub span{color:var(--accent)}
 
 /* SCHEMATICS — single map + lore panel */
 .schematic-layout{margin:2rem 0;display:grid;grid-template-columns:1fr 380px;gap:2.5rem;align-items:start}
@@ -108,20 +118,20 @@ nav a.active{color:var(--teal)}
 .map-frame{position:relative;overflow:hidden;border:1px solid rgba(200,169,110,0.15)}
 .map-frame img{width:100%;height:auto;display:block;filter:sepia(0.25) brightness(0.88);transition:filter 0.5s}
 .map-item:hover .map-frame img{filter:sepia(0.1) brightness(1)}
-.map-frame::before{content:'CLASSIFIED SCHEMATIC';position:absolute;top:0.65rem;left:0.65rem;font-family:var(--font-mono);font-size:0.44rem;letter-spacing:0.32em;color:var(--accent);z-index:2;opacity:0.65}
+.map-frame::before{content:'CLASSIFIED SCHEMATIC';position:absolute;top:0.65rem;left:0.65rem;font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.32em;color:var(--accent);z-index:2;opacity:0.65}
 .map-meta{padding:0.9rem 0.5rem 0.3rem}
-.map-label{font-family:var(--font-mono);font-size:0.56rem;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:0.35rem}
-.map-desc{font-family:var(--font-caption);font-size:1.05rem;color:var(--muted);line-height:1.45}
+.map-label{font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:0.35rem}
+.map-desc{font-family:var(--font-caption);font-size:1.15rem;color:var(--muted);line-height:1.45}
 
 /* SCHEMATIC LORE PANEL */
 .schematic-lore{padding:2rem 1.8rem;border:1px solid rgba(200,169,110,0.1);background:rgba(200,169,110,0.02);position:relative;align-self:stretch;display:flex;flex-direction:column;justify-content:space-between}
-.schematic-lore::before{content:'RECOVERED ANNOTATION';position:absolute;top:-0.5rem;left:1rem;font-family:var(--font-mono);font-size:0.48rem;letter-spacing:0.28em;color:var(--accent);background:#000;padding:0 0.5rem;opacity:0.7}
+.schematic-lore::before{content:'RECOVERED ANNOTATION';position:absolute;top:-0.5rem;left:1rem;font-family:var(--font-mono);font-size:0.52rem;letter-spacing:0.28em;color:var(--accent);background:#000;padding:0 0.5rem;opacity:0.7}
 .lore-entry{margin-bottom:2rem}
 .lore-entry:last-child{margin-bottom:0}
-.lore-tag{font-family:var(--font-mono);font-size:0.48rem;letter-spacing:0.3em;color:var(--red);text-transform:uppercase;margin-bottom:0.5rem;opacity:0.8}
-.lore-text{font-family:var(--font-mono);font-size:0.72rem;line-height:1.9;color:#8eada6}
+.lore-tag{font-family:var(--font-mono);font-size:0.52rem;letter-spacing:0.3em;color:var(--red);text-transform:uppercase;margin-bottom:0.5rem;opacity:0.8}
+.lore-text{font-family:var(--font-mono);font-size:0.78rem;line-height:2;color:#8eada6}
 .lore-text strong{color:var(--accent);font-weight:normal}
-.lore-caveat{font-family:var(--font-caption);font-size:1.1rem;color:var(--accent);margin-top:0.6rem;opacity:0.75;line-height:1.4}
+.lore-caveat{font-family:var(--font-caption);font-size:1.2rem;color:var(--accent);margin-top:0.6rem;opacity:0.75;line-height:1.4}
 
 /* FACTIONS */
 .factions{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2rem 0}
@@ -132,119 +142,63 @@ nav a.active{color:var(--teal)}
 .faction-card.rationalists::before{background:linear-gradient(to right,transparent,var(--accent),transparent)}
 .faction-card.permanent::before{background:linear-gradient(to right,transparent,var(--red),transparent)}
 .faction-card::after{content:'';position:absolute;bottom:0;right:0;width:20px;height:20px;border-right:1px solid rgba(200,169,110,0.1);border-bottom:1px solid rgba(200,169,110,0.1)}
-.faction-id{font-family:var(--font-mono);font-size:0.48rem;letter-spacing:0.32em;color:var(--muted);margin-bottom:0.7rem;text-transform:uppercase;opacity:0.8}
-.faction-name{font-family:var(--font-title);font-size:1.75rem;letter-spacing:0.08em;margin-bottom:1rem;line-height:1}
+.faction-id{font-family:var(--font-mono);font-size:0.54rem;letter-spacing:0.32em;color:var(--muted);margin-bottom:0.7rem;text-transform:uppercase;opacity:0.8}
+.faction-name{font-family:var(--font-title);font-size:2rem;letter-spacing:0.08em;margin-bottom:1rem;line-height:1}
 .faction-card.believers .faction-name{color:var(--teal)}
 .faction-card.rationalists .faction-name{color:var(--accent)}
 .faction-card.permanent .faction-name{color:#c44}
-.faction-text{font-family:var(--font-mono);font-size:0.7rem;line-height:2;color:#8eada6}
-.faction-pop{font-family:var(--font-mono);font-size:0.56rem;color:var(--muted);margin-top:1.2rem;padding-top:0.9rem;border-top:1px solid var(--border);letter-spacing:0.05em}
+.faction-text{font-family:var(--font-mono);font-size:0.78rem;line-height:2;color:#8eada6}
+.faction-pop{font-family:var(--font-mono);font-size:0.62rem;color:var(--muted);margin-top:1.2rem;padding-top:0.9rem;border-top:1px solid var(--border);letter-spacing:0.05em}
 .faction-pop span{color:var(--accent)}
 
 /* REPORTER ARTIFACT */
 .artifact-section{border:1px solid rgba(139,26,26,0.25);padding:3rem 2.5rem;position:relative;background:rgba(139,26,26,0.025);margin:2rem 0}
-.artifact-section::before{content:'⚠ ANOMALOUS ARTIFACT — RECOVERED HUMAN DOCUMENT — ORIGIN UNKNOWN';position:absolute;top:-0.55rem;left:1.5rem;font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.22em;color:var(--red);background:#000;padding:0 0.6rem;opacity:0.9}
+.artifact-section::before{content:'⚠ ANOMALOUS ARTIFACT — RECOVERED HUMAN DOCUMENT — ORIGIN UNKNOWN';position:absolute;top:-0.55rem;left:1.5rem;font-family:var(--font-mono);font-size:0.54rem;letter-spacing:0.22em;color:var(--red);background:#000;padding:0 0.6rem;opacity:0.9}
 .artifact-inner{display:grid;grid-template-columns:1fr 420px;gap:3rem;align-items:start}
-.artifact-note{font-family:var(--font-mono);font-size:0.72rem;line-height:2;color:#8eada6;font-style:normal}
+.artifact-note{font-family:var(--font-mono);font-size:0.78rem;line-height:2.1;color:#8eada6}
 .artifact-note strong{color:var(--red);font-weight:normal}
 .artifact-note em{font-style:italic;color:var(--muted)}
 .artifact-img-wrap{position:relative}
 .artifact-img-wrap img{width:100%;height:auto;display:block;filter:sepia(0.5) brightness(0.82);border:1px solid rgba(200,169,110,0.12)}
-.artifact-scrawl{font-family:var(--font-caption);font-size:1.1rem;color:var(--accent);margin-top:1rem;line-height:1.65;opacity:0.8}
-.artifact-scrawl span{font-size:0.85rem;color:var(--muted)}
+.artifact-scrawl{font-family:var(--font-caption);font-size:1.2rem;color:var(--accent);margin-top:1rem;line-height:1.7;opacity:0.82}
+.artifact-scrawl span{font-size:0.9rem;color:var(--muted)}
 
 /* DEPTH RULE */
 .depth-rule{display:flex;align-items:center;gap:1.2rem;margin:5rem 0 0;padding:0}
 .depth-rule::before,.depth-rule::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(200,169,110,0.12),transparent)}
-.depth-rule span{font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.38em;color:rgba(122,118,112,0.5);white-space:nowrap;text-transform:uppercase}
+.depth-rule span{font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.38em;color:rgba(122,118,112,0.5);white-space:nowrap;text-transform:uppercase}
 
 /* ACCESS GATE */
 .access-gate{border:1px solid rgba(139,26,26,0.35);padding:4rem 2.5rem;text-align:center;position:relative;margin:3rem 0 0;background:rgba(139,26,26,0.03)}
 .access-gate::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(139,26,26,0.015) 12px,rgba(139,26,26,0.015) 24px);pointer-events:none}
-.gate-stamp{font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.42em;color:var(--red);margin-bottom:1.8rem;display:block;opacity:0.9}
-.gate-title{font-family:var(--font-title);font-size:clamp(2.5rem,6vw,4.2rem);letter-spacing:0.1em;color:var(--text);margin-bottom:1.2rem}
-.gate-text{font-family:var(--font-mono);font-size:0.73rem;line-height:2.1;color:#8eada6;max-width:520px;margin:0 auto 2.5rem}
+.gate-stamp{font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.42em;color:var(--red);margin-bottom:1.8rem;display:block;opacity:0.9}
+.gate-title{font-family:var(--font-title);font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:0.1em;color:var(--text);margin-bottom:1.2rem}
+.gate-text{font-family:var(--font-mono);font-size:0.8rem;line-height:2.1;color:#8eada6;max-width:520px;margin:0 auto 2.5rem}
 .gate-form{display:flex;gap:0.8rem;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
-.gate-input{flex:1;min-width:230px;background:rgba(0,0,0,0.85);border:1px solid rgba(200,169,110,0.18);color:var(--text);font-family:var(--font-mono);font-size:0.78rem;padding:0.9rem 1.1rem;letter-spacing:0.1em;outline:none;transition:border-color 0.3s}
+.gate-input{flex:1;min-width:230px;background:rgba(0,0,0,0.85);border:1px solid rgba(200,169,110,0.18);color:var(--text);font-family:var(--font-mono);font-size:0.82rem;padding:0.9rem 1.1rem;letter-spacing:0.1em;outline:none;transition:border-color 0.3s}
 .gate-input::placeholder{color:var(--muted);opacity:0.5}
 .gate-input:focus{border-color:rgba(26,138,114,0.45)}
-.gate-btn{background:transparent;border:1px solid var(--teal);color:var(--teal);font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.32em;text-transform:uppercase;padding:0.9rem 1.6rem;cursor:pointer;transition:all 0.3s;white-space:nowrap}
+.gate-btn{background:transparent;border:1px solid var(--teal);color:var(--teal);font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.32em;text-transform:uppercase;padding:0.9rem 1.6rem;cursor:pointer;transition:all 0.3s;white-space:nowrap}
 .gate-btn:hover{background:var(--teal);color:#000}
-.gate-disclaimer{font-family:var(--font-mono);font-size:0.52rem;letter-spacing:0.15em;color:var(--muted);margin-top:1.3rem;opacity:0.5}
-.gate-success{display:none;font-family:var(--font-mono);font-size:0.8rem;color:var(--teal);letter-spacing:0.22em;margin-top:1rem;line-height:2}
+.gate-disclaimer{font-family:var(--font-mono);font-size:0.56rem;letter-spacing:0.15em;color:var(--muted);margin-top:1.3rem;opacity:0.5}
+.gate-success{display:none;font-family:var(--font-mono);font-size:0.85rem;color:var(--teal);letter-spacing:0.22em;margin-top:1rem;line-height:2}
 
 /* SECRET DOOR MODAL */
-.secret-modal{
-  display:none;position:fixed;inset:0;z-index:2000;
-  background:rgba(0,0,0,0.97);
-  align-items:center;justify-content:center;
-  flex-direction:column;padding:2rem;
-  backdrop-filter:blur(8px);
-  overflow-y:auto;
-}
+.secret-modal{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.97);align-items:center;justify-content:center;flex-direction:column;padding:2rem;backdrop-filter:blur(8px);overflow-y:auto}
 .secret-modal.active{display:flex}
-.secret-modal-img{
-  max-width:680px;width:100%;height:auto;
-  display:block;margin:0 auto 2rem;
-  border:1px solid rgba(212,168,71,0.18);
-  box-shadow:0 0 80px rgba(212,168,71,0.08);
-}
-.secret-modal-stamp{
-  font-family:var(--font-mono);font-size:0.58rem;
-  letter-spacing:0.42em;color:var(--red);
-  margin-bottom:1.5rem;text-align:center;
-  animation:flicker 6s linear infinite;
-}
-.secret-modal-title{
-  font-family:var(--font-title);
-  font-size:clamp(2rem,5vw,3.5rem);
-  letter-spacing:0.1em;color:var(--text);
-  text-align:center;margin-bottom:1.2rem;
-}
-.secret-modal-text{
-  font-family:var(--font-mono);font-size:0.75rem;
-  line-height:2.1;color:#8eada6;
-  max-width:480px;margin:0 auto 2rem;
-  text-align:center;
-}
+.secret-modal-img{max-width:780px;width:100%;height:auto;display:block;margin:0 auto 2rem;border:1px solid rgba(212,168,71,0.18);box-shadow:0 0 80px rgba(212,168,71,0.08)}
+.secret-modal-stamp{font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.42em;color:var(--red);margin-bottom:1.5rem;text-align:center;animation:flicker 6s linear infinite}
+.secret-modal-title{font-family:var(--font-title);font-size:clamp(2.2rem,5vw,4rem);letter-spacing:0.1em;color:var(--text);text-align:center;margin-bottom:1.2rem}
+.secret-modal-text{font-family:var(--font-mono);font-size:0.82rem;line-height:2.1;color:#8eada6;max-width:500px;margin:0 auto 2rem;text-align:center}
 .secret-modal-text strong{color:rgba(212,168,71,0.9);font-weight:normal}
-.secret-gate-form{
-  display:flex;gap:0.8rem;max-width:440px;
-  margin:0 auto;flex-wrap:wrap;justify-content:center;
-}
-.secret-gate-input{
-  flex:1;min-width:220px;
-  background:rgba(0,0,0,0.85);
-  border:1px solid rgba(212,168,71,0.28);
-  color:var(--text);font-family:var(--font-mono);
-  font-size:0.78rem;padding:0.9rem 1.1rem;
-  letter-spacing:0.1em;outline:none;
-  transition:border-color 0.3s;
-}
+.secret-gate-form{display:flex;gap:0.8rem;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.secret-gate-input{flex:1;min-width:220px;background:rgba(0,0,0,0.85);border:1px solid rgba(212,168,71,0.28);color:var(--text);font-family:var(--font-mono);font-size:0.82rem;padding:0.9rem 1.1rem;letter-spacing:0.1em;outline:none;transition:border-color 0.3s}
 .secret-gate-input::placeholder{color:var(--muted);opacity:0.5}
 .secret-gate-input:focus{border-color:rgba(212,168,71,0.55)}
-.secret-gate-btn{
-  background:transparent;
-  border:1px solid rgba(212,168,71,0.55);
-  color:rgba(212,168,71,0.9);
-  font-family:var(--font-mono);font-size:0.68rem;
-  letter-spacing:0.32em;text-transform:uppercase;
-  padding:0.9rem 1.5rem;cursor:pointer;
-  transition:all 0.3s;white-space:nowrap;
-}
+.secret-gate-btn{background:transparent;border:1px solid rgba(212,168,71,0.55);color:rgba(212,168,71,0.9);font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.32em;text-transform:uppercase;padding:0.9rem 1.5rem;cursor:pointer;transition:all 0.3s;white-space:nowrap}
 .secret-gate-btn:hover{background:rgba(212,168,71,0.12)}
-.secret-disclaimer{
-  font-family:var(--font-mono);font-size:0.5rem;
-  letter-spacing:0.15em;color:var(--muted);
-  margin-top:1rem;opacity:0.45;text-align:center;
-}
-.secret-skip{
-  font-family:var(--font-mono);font-size:0.52rem;
-  letter-spacing:0.22em;color:var(--muted);
-  margin-top:1.8rem;cursor:pointer;
-  text-decoration:underline;opacity:0.38;
-  transition:opacity 0.2s;background:none;border:none;
-}
+.secret-disclaimer{font-family:var(--font-mono);font-size:0.54rem;letter-spacing:0.15em;color:var(--muted);margin-top:1rem;opacity:0.45;text-align:center}
+.secret-skip{font-family:var(--font-mono);font-size:0.56rem;letter-spacing:0.22em;color:var(--muted);margin-top:1.8rem;cursor:pointer;text-decoration:underline;opacity:0.38;transition:opacity 0.2s;background:none;border:none}
 .secret-skip:hover{opacity:0.75}
 
 /* LIGHTBOX */
@@ -253,7 +207,7 @@ nav a.active{color:var(--teal)}
 .lb-img-wrap{position:relative;max-width:90vw;max-height:80vh}
 .lb-img-wrap::before{content:'';position:absolute;inset:-1px;z-index:1;border:1px solid rgba(26,138,114,0.3);pointer-events:none}
 #lbImg{max-width:90vw;max-height:80vh;object-fit:contain;display:block;position:relative;z-index:0}
-.lb-caption{font-family:var(--font-caption);font-size:1.35rem;color:var(--accent);margin-top:1.5rem;text-align:center;max-width:600px;line-height:1.35}
+.lb-caption{font-family:var(--font-caption);font-size:1.5rem;color:var(--accent);margin-top:1.5rem;text-align:center;max-width:600px;line-height:1.35}
 .lb-close{position:fixed;top:1.5rem;right:2rem;font-size:1.8rem;color:var(--muted);cursor:pointer;background:none;border:none;line-height:1;transition:color 0.2s}
 .lb-close:hover{color:var(--text)}
 .lb-nav{position:fixed;top:50%;transform:translateY(-50%);font-size:2.8rem;color:rgba(200,169,110,0.25);cursor:pointer;background:none;border:none;padding:1rem;transition:color 0.2s;user-select:none}
@@ -264,7 +218,7 @@ nav a.active{color:var(--teal)}
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:2.2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
 footer .left{font-family:var(--font-title);font-size:0.95rem;letter-spacing:0.14em;color:var(--muted)}
-footer .right{font-size:0.78rem;color:var(--muted)}
+footer .right{font-size:0.82rem;color:var(--muted)}
 footer a{color:var(--accent);text-decoration:none;transition:color 0.2s}
 footer a:hover{color:var(--text)}
 
@@ -276,7 +230,7 @@ footer a:hover{color:var(--text)}
 }
 @media(max-width:768px){
   .surv-grid{grid-template-columns:1fr 1fr}
-  nav a{margin-left:1rem;font-size:0.65rem}
+  nav a{margin-left:1rem;font-size:0.68rem}
   .hero-title{font-size:clamp(4rem,18vw,8rem)}
   .dossier{padding:0 1.5rem 8rem}
 }
@@ -317,10 +271,10 @@ footer a:hover{color:var(--text)}
     <div class="hero-subtitle">Operational Sector 7 — Subterranean Observation Station — Wyoming Basin</div>
     <div class="hero-rule"></div>
     <div class="hero-redacted">
-      DOCUMENT REF: <span class="redact">CVT-7-██████</span> &nbsp;|&nbsp; 
-      CYCLE: <span class="redact">████ — Present</span> &nbsp;|&nbsp; 
+      DOCUMENT REF: <span class="redact">CVT-7-██████</span> &nbsp;|&nbsp;
+      CYCLE: <span class="redact">████ — Present</span> &nbsp;|&nbsp;
       CLEARANCE: <span class="redact">SETTLED</span><br>
-      AUTHORIZED ACCESS: <span class="redact">NITZAKEN COUNCIL ONLY</span> &nbsp;|&nbsp; 
+      AUTHORIZED ACCESS: <span class="redact">NITZAKEN COUNCIL ONLY</span> &nbsp;|&nbsp;
       DISTRIBUTION: <span class="redact">RESTRICTED</span>
     </div>
   </div>
@@ -349,7 +303,6 @@ footer a:hover{color:var(--text)}
       <div class="data-field">COVENANT CONTACT<span>AUTHORIZED</span></div>
       <div class="data-field">SURFACE BREACH<span>RECORDED — CYCLE 2026</span></div>
     </div>
-
     <p class="covenant-text">
       Sector 7 — designated <strong>LIMBO</strong> by its permanent population — is a functioning subterranean observation and staging station located beneath the Wyoming Basin. It is one of <strong>█ confirmed installations</strong> operating continuously beneath the surface of this world. Each installation operates independently. Each serves the same purpose.
     </p>
@@ -374,6 +327,18 @@ footer a:hover{color:var(--text)}
   </div>
 
   <div class="surv-grid" id="survGrid"></div>
+
+  <!-- AERIAL HUB FEATURE -->
+  <div class="aerial-feature" id="aerialFeature">
+    <div class="aerial-frame">
+      <img src="images/Limbo_from_above.png" alt="Sector 7 aerial overview" loading="lazy" onerror="this.closest('.aerial-feature').style.display='none'">
+      <div class="aerial-overlay">
+        <div class="aerial-stamp">OBS-LOG-7.000 — AERIAL OBSERVATION — SECTOR 7 — NITZAKEN HUB</div>
+        <div class="aerial-label">THE HUB</div>
+        <div class="aerial-sub">Full sector view from primary observation point. Population distributed across three zones.<br>Node activity: <span>baseline</span>. Nitzaken River: <span>active</span>. Covenant presence: <span>undetected by subjects</span>.</div>
+      </div>
+    </div>
+  </div>
 
   <!-- SCHEMATICS -->
   <div class="section-header">
@@ -478,7 +443,7 @@ footer a:hover{color:var(--text)}
 <!-- SECRET DOOR MODAL -->
 <div class="secret-modal" id="secretModal">
   <div class="secret-modal-stamp">⬛ UNAUTHORIZED ACCESS DETECTED — SENTINEL NOTIFIED ⬛</div>
-  <img class="secret-modal-img" src="images/Limbo_-_The_Secret_Door.png" alt="The Secret Door" onerror="this.style.display='none'">
+  <img class="secret-modal-img" src="images/Limbo_-_The_Secret_Door.png" alt="Earl and Richard at the Node door" onerror="this.style.display='none'">
   <div class="secret-modal-title">YOU FOUND SOMETHING.</div>
   <p class="secret-modal-text">
     So did they.<br><br>
@@ -512,7 +477,7 @@ footer a:hover{color:var(--text)}
 </footer>
 
 <script>
-// SURVEILLANCE IMAGES
+// SURVEILLANCE IMAGES — 7 items, 3-col grid = 2 full rows + 1 centered
 const survItems = [
   { src:"images/Limbo_Corridor.png", faction:"SECTOR 7 — MAIN CORRIDOR", note:"Primary transit route. Bioluminescent channel active. Population movement: normal.", ts:"OBS-LOG-7.001" },
   { src:"images/Limbo_-_Corridor_1_-_The_belivers_.png", faction:"FACTION ZONE — THE BELIEVERS", note:"Believer congregation point. Structural archways of Covenant origin. Behavioral pattern: cooperative.", ts:"OBS-LOG-7.014" },
@@ -520,11 +485,10 @@ const survItems = [
   { src:"images/Limbo_-_Corridor_-_The_Rationalists.png", faction:"FACTION ZONE — THE RATIONALISTS", note:"Rationalist primary corridor. Documentation activity observed. Materials being catalogued.", ts:"OBS-LOG-7.022" },
   { src:"images/Limbo_Corridor_6_The_Permanent_Population.png", faction:"DEEP SECTOR — PERMANENT POPULATION", note:"Permanent population zone. Access restricted. One subject of elevated interest has been identified.", ts:"OBS-LOG-7.031 // WATCH", secret:true },
   { src:"images/Limbo_-_The_Community.png", faction:"COMMUNITY ZONE — GENERAL POPULATION", note:"Central gathering area. Multi-faction presence observed. Behavioral pattern: routine.", ts:"OBS-LOG-7.008" },
-  { src:"images/Limbo_from_above.png", faction:"AERIAL OBSERVATION — SECTOR 7", note:"Full sector view from observation point. Population distributed across three zones. Node activity: baseline.", ts:"OBS-LOG-7.000" },
   { src:"images/Limbo_-_Corridor_-_undetermned.png", faction:"UNDETERMINED ZONE — UNCLASSIFIED", note:"Location within station unconfirmed. Recovered imagery. Origin: unknown.", ts:"OBS-LOG-7.??? // UNVERIFIED" },
 ];
 
-// MAP IMAGE — single schematic, full width
+// MAP — single schematic full width
 const mapItem = { src:"images/Limbo_maps_-_4.png", label:"SECTOR OVERVIEW — MULTI-VARIANT", desc:"Four-panel overview of sector variants. Recovered from Rationalist archive. Cross-referenced against Covenant originals — 67% accuracy." };
 
 const survGrid = document.getElementById('survGrid');
@@ -557,7 +521,15 @@ survItems.forEach((item, i) => {
   survGrid.appendChild(el);
 });
 
-// BUILD MAP — single item full width
+// WIRE AERIAL HUB TO LIGHTBOX
+(function() {
+  const aerialIdx = allImages.length;
+  allImages.push({ src:'images/Limbo_from_above.png', caption:'Sector 7 — Full aerial view. Nitzaken Hub. Population zones visible. Node activity: baseline.' });
+  const aerialEl = document.getElementById('aerialFeature');
+  if (aerialEl) aerialEl.addEventListener('click', () => openLightbox(aerialIdx));
+})();
+
+// BUILD MAP — single item
 (function() {
   const idx = allImages.length;
   allImages.push({ src: mapItem.src, caption: mapItem.label });
@@ -612,7 +584,7 @@ function handleSecretGate() {
     return;
   }
   console.log('Node access request:', email);
-  document.getElementById('secretGateForm').innerHTML = '<div style="font-family:var(--font-mono);font-size:0.8rem;color:#d4a847;letter-spacing:0.2em;text-align:center">// ACCESS GRANTED — REDIRECTING TO NODE //<br><br>The Sentinel has been notified.</div>';
+  document.getElementById('secretGateForm').innerHTML = '<div style="font-family:var(--font-mono);font-size:0.85rem;color:#d4a847;letter-spacing:0.2em;text-align:center">// ACCESS GRANTED — REDIRECTING TO NODE //<br><br>The Sentinel has been notified.</div>';
   setTimeout(() => { goToNode(); }, 2500);
 }
 
