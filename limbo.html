@@ -491,15 +491,10 @@ footer a:hover{color:var(--text)}
     So did they.<br><br>
     What's behind this door is classified beyond Settled status.<br>
     <strong>The Node has been waiting.</strong><br><br>
-    Enter your designation to request access.<br>
     Your access will be logged by the Sentinel.
   </p>
-  <div class="secret-gate-form" id="secretGateForm">
-    <input type="email" class="secret-gate-input" id="secretEmail" placeholder="YOUR DESIGNATION (EMAIL)">
-    <button class="secret-gate-btn" onclick="handleSecretGate()">ACCESS THE NODE</button>
-  </div>
-  <div class="secret-disclaimer">BY ENTERING YOU ACKNOWLEDGE WHAT YOU ARE ABOUT TO SEE IS NOT FOR EVERYONE</div>
-  <button class="secret-skip" onclick="goToNode()">skip — take me there anyway</button>
+  <button class="secret-gate-btn" onclick="goToNode()">ACCESS THE NODE</button>
+  <div class="secret-disclaimer">WHAT YOU ARE ABOUT TO SEE IS NOT FOR EVERYONE</div>
 </div>
 
 <!-- LIGHTBOX -->
@@ -531,7 +526,7 @@ const survItems = [
 ];
 
 // MAP — single schematic full width
-const mapItem = { src:"images/Limbo_maps_-_4.png", label:"SECTOR OVERVIEW — MULTI-VARIANT", desc:"Four-panel overview of sector variants. Recovered from Rationalist archive. Cross-referenced against Covenant originals — 67% accuracy." };
+const mapItem = { src:"images/Limbo_maps_-_3.png", label:"SECTOR OVERVIEW — MULTI-VARIANT", desc:"Three-panel overview of sector variants. Recovered from Rationalist archive. Cross-referenced against Covenant originals — 67% accuracy." };
 
 const survGrid = document.getElementById('survGrid');
 const mapGrid = document.getElementById('mapGrid');
