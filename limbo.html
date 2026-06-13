@@ -26,6 +26,10 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   opacity:0.4}
 
+/* CRYSTAL BANNER */
+.crystal-banner{width:100%;display:block;line-height:0;position:relative;z-index:200;background:#000}
+.crystal-banner img{width:100%;height:auto;display:block;object-fit:cover}
+
 /* HEADER */
 header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,9,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;height:62px;display:flex;align-items:center;justify-content:space-between}
 .site-title{font-family:var(--font-title);font-size:1.35rem;letter-spacing:0.14em;color:var(--text);text-decoration:none}
@@ -35,6 +39,7 @@ nav a.active{color:var(--teal)}
 
 /* CLASSIFIED HERO */
 .classified-hero{position:relative;margin-top:62px;padding:0;overflow:hidden;min-height:520px;display:flex;align-items:center;justify-content:center;background:#000}
+/* crystal banner sits above fixed header — header sticks once banner scrolls out */
 .hero-bg{position:absolute;inset:0;background:
   radial-gradient(ellipse at 50% 100%, rgba(26,138,114,0.14) 0%, transparent 65%),
   radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.5) 0%, transparent 100%);z-index:1}
@@ -276,6 +281,11 @@ footer a:hover{color:var(--text)}
 </head>
 <body>
 
+<!-- CRYSTAL BANNER -->
+<div class="crystal-banner">
+  <img src="images/Firefly_Gemini_Flash_Bioluminescent_teal_crystal_stal_670925_qDL.png" alt="Bioluminescent crystal formations — Sector 7">
+</div>
+
 <header>
   <a href="https://www.thecovenantbeneath.com" class="site-title">THE COVENANT BENEATH</a>
   <nav>
@@ -292,13 +302,7 @@ footer a:hover{color:var(--text)}
   <div class="hero-scanlines"></div>
   <div class="hero-content">
     <div class="covenant-seal">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(26,138,114,0.95)" stroke-width="1"/>
-        <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(26,138,114,0.7)" stroke-width="0.5"/>
-        <polygon points="50,18 58,38 80,38 63,51 70,72 50,59 30,72 37,51 20,38 42,38" fill="none" stroke="rgba(26,138,114,0.95)" stroke-width="0.8"/>
-        <circle cx="50" cy="50" r="5" fill="rgba(26,138,114,0.9)"/>
-        <text x="50" y="90" text-anchor="middle" font-family="Share Tech Mono, monospace" font-size="5" fill="rgba(26,138,114,0.9)" letter-spacing="3">THE COVENANT</text>
-      </svg>
+      <img src="images/covenant_seal.svg" alt="The Covenant Seal" style="width:100%;height:100%;object-fit:contain;">
     </div>
     <div class="classification-stamp">⬛ TOP SECRET // COVENANT EYES ONLY // SECTOR-7-LIMBO ⬛</div>
     <div class="hero-title">LIMBO</div>
