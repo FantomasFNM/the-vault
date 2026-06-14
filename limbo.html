@@ -38,7 +38,7 @@ nav a:hover{color:var(--accent)}
 nav a.active{color:var(--teal)}
 
 /* CLASSIFIED HERO */
-.classified-hero{position:relative;margin-top:0;padding:0;overflow:hidden;min-height:520px;display:flex;align-items:center;justify-content:center;background:#000}
+.classified-hero{position:relative;margin-top:0;padding:2rem 0 3rem;overflow:hidden;min-height:520px;display:flex;align-items:center;justify-content:center;background:#000}
 /* crystal banner sits above fixed header — header sticks once banner scrolls out */
 .hero-bg{position:absolute;inset:0;background:
   radial-gradient(ellipse at 50% 100%, rgba(26,138,114,0.14) 0%, transparent 65%),
@@ -46,7 +46,7 @@ nav a.active{color:var(--teal)}
 .hero-scanlines{position:absolute;inset:0;z-index:2;pointer-events:none;
   background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.07) 2px,rgba(0,0,0,0.07) 4px)}
 .hero-content{position:relative;z-index:3;text-align:center;padding:5rem 2rem 4rem}
-.covenant-seal{width:120px;height:140px;margin:0 auto 1.8rem;opacity:0.9;animation:pulse-seal 4s ease-in-out infinite;filter:drop-shadow(0 0 8px rgba(26,138,114,0.8))}
+.covenant-seal{width:240px;height:280px;margin:0 auto 1.8rem;opacity:0.9;animation:pulse-seal 4s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(26,138,114,0.9))}
 @keyframes pulse-seal{0%,100%{opacity:0.85;transform:scale(1)}50%{opacity:1;transform:scale(1.03)}}
 .covenant-seal svg{width:100%;height:100%}
 .classification-stamp{font-family:var(--font-mono);font-size:0.82rem;letter-spacing:0.45em;color:var(--red);text-transform:uppercase;margin-bottom:1.5rem;opacity:0.85;animation:flicker 8s linear infinite}
