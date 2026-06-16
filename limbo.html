@@ -34,6 +34,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,9,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;height:62px;display:flex;align-items:center;justify-content:space-between}
 .site-title{font-family:var(--font-title);font-size:1.35rem;letter-spacing:0.14em;color:var(--text);text-decoration:none}
 nav a{font-size:0.78rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-left:2.2rem;transition:color 0.25s}
+nav a.nav-restricted{color:#ff3333!important;border:1px solid rgba(255,51,51,0.4);padding:0.2rem 0.5rem;border-radius:2px;animation:restricted-pulse 2s ease-in-out infinite}
+@keyframes restricted-pulse{0%,100%{opacity:1;box-shadow:0 0 6px rgba(255,51,51,0.3)}50%{opacity:0.75;box-shadow:0 0 14px rgba(255,51,51,0.7)}}
 nav a:hover{color:var(--accent)}
 nav a.active{color:var(--teal)}
 
@@ -294,6 +296,7 @@ footer a:hover{color:var(--text)}
     <a href="https://fantomasfnm.github.io/the-vault/">The Vault</a>
     <a href="#" class="active">Limbo</a>
     <a href="https://www.amazon.com/dp/B0GY87LYWW" target="_blank">Get the Book</a>
+    <a href="node.html" class="nav-restricted">⚠ RESTRICTED</a>
   </nav>
 </header>
 
